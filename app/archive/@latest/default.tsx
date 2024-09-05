@@ -1,3 +1,11 @@
+import { getLatestNews } from "../../../lib/news";
+import NewsList from "../../components/NewList";
+
 export default function LatestPage() {
-    return <>Latest</>;
+    return (
+        <>
+            <h2>Latest</h2>
+            <NewsList newsList={getLatestNews()} />
+        </>
+    );
 }
