@@ -4,15 +4,15 @@ export default function MainHeader() {
     return (
         <header id="main-header">
             <div id="logo">
-                <Link href="/">NextNews</Link>
+                <Link href="/">REAL NEWS</Link>
             </div>
             <nav>
                 <ul>
                     <li>
-                        <Link href="/news">News</Link>
+                        <Link href="/news">ALL NEWS</Link>
                     </li>
                     <li>
-                        <Link href="/archive">Archive</Link>
+                        <Link href="/archive">OLD NEWS</Link>
                     </li>
                 </ul>
             </nav>

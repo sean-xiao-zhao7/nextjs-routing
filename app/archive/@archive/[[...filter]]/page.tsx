@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function YearNewsPage({ params }) {
     const years = getAvailableNewsYears();
-    let content = <p>Select filter from above.</p>;
+    let content = null;
 
     if (params.filter) {
         let newsList = [];

@@ -6,16 +6,16 @@
 
 html {
     font-family: "Merriweather", serif;
-    background-color: white;
+    background-color: rgb(243, 243, 243);
 }
 
 body {
     margin: 0;
-    background-color: #313131;
+    background-color: #2d2d2d;
     color: #e5e5e1;
-    margin: 1rem;
-    padding: 2rem;
-    min-height: calc(100vh - 2rem);
+    margin: 2rem;
+    padding: 3rem;
+    min-height: calc(100vh - 4rem);
 }
 
 ul {
@@ -40,7 +40,6 @@ ul {
 #logo {
     font-family: "Inter", sans-serif;
     font-size: 1.5rem;
-    border-radius: 4px;
 }
 
 #main-header #logo a,
@@ -59,7 +58,6 @@ ul {
     text-decoration: none;
     color: #e5e5e1;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
 }
 
 #main-header ul a:hover,
@@ -128,7 +126,6 @@ ul {
     width: 100%;
     height: 14rem;
     object-fit: cover;
-    border-radius: 4px;
 }
 
 .news-list a:hover {
@@ -150,13 +147,11 @@ ul {
 .news-article img {
     width: 7rem;
     margin-bottom: 1rem;
-    border-radius: 4px;
 }
 
 .modal {
     background-color: #bababa;
     padding: 2rem;
-    border-radius: 4px;
     border: none;
     box-shadow: 0 0 10px 0 #181817;
     max-width: 50rem;
