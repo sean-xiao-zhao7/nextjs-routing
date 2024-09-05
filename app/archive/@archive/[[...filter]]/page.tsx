@@ -1,7 +1,7 @@
 import { DUMMY_NEWS } from "../../../../data/news-articles";
 import {
     getAvailableNewsYears,
-    getAvailableNewsMonths,
+    getNewsForYearAndMonth,
 } from "../../../../lib/news";
 import NewsList from "../../../components/NewList";
 import Link from "next/link";
@@ -17,11 +17,14 @@ export default function YearNewsPage({ params }) {
                 news.date.includes(params.filter[0].toString())
             );
         } else if (params.filter[1]) {
-            newsList = getAvailableNewsMonths(params.filter[1]);
+            newsList = getNewsForYearAndMonth(
+                params.filter[0],
+                params.filter[1]
+            );
         }
 
         if (newsList.length <= 0) {
-            content = <p>No articles for year {params.year}.</p>;
+            content = <p>No articles.</p>;
         } else {
             content = <NewsList newsList={newsList} />;
         }
