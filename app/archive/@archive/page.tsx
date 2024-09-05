@@ -1,3 +1,9 @@
 export default function ArchivePage() {
-    return <>Archive</>;
+    return (
+        <header id="archive-header">
+            <nav>
+                <ul></ul>
+            </nav>
+        </header>
+    );
 }
