@@ -11,15 +11,20 @@ export default function YearNewsPage({ params }) {
     let content = <p>Select filter from above.</p>;
 
     if (params.filter) {
-        const newsList = DUMMY_NEWS.filter((news) =>
-            news.date.includes(params.year.toString())
-        );
-
-        if (newsList.length <= 0) {
-            return <h1>No articles for year {params.year}.</h1>;
+        let newsList = [];
+        if (params.filter[0]) {
+            newsList = DUMMY_NEWS.filter((news) =>
+                news.date.includes(params.filter[0].toString())
+            );
+        } else if (params.filter[1]) {
+            newsList = getAvailableNewsMonths(params.filter[1]);
         }
 
-        content = <NewsList newsList={newsList} />;
+        if (newsList.length <= 0) {
+            content = <p>No articles for year {params.year}.</p>;
+        } else {
+            content = <NewsList newsList={newsList} />;
+        }
     }
 
     return (
