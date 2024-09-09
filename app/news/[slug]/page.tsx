@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { DUMMY_NEWS } from "../../../data/news-articles";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ export default function NewsDetailsPage({ params }: { params: any }) {
     return (
         <article className="news-article">
             <header>
-                <Link href={`${newsArticle.image}/image`}>
+                <Link href={`${newsArticle.slug}/image`}>
                     <img
                         src={`/images/news/${newsArticle.image}`}
                         alt={newsArticle.title}
