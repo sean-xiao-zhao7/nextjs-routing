@@ -10,7 +10,7 @@ export default function ImagePage({ params }) {
 
     return (
         <>
-            <div className="model-backdrop" />
+            <div className="modal-backdrop" />
             <dialog className="modal" open>
                 <div className="fullscreen-image">
                     <img

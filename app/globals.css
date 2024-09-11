@@ -150,11 +150,9 @@ ul {
 }
 
 .modal {
-    background-color: #bababa;
-    padding: 2rem;
     border: none;
     box-shadow: 0 0 10px 0 #181817;
-    max-width: 50rem;
+    max-width: 66rem;
     width: 100%;
 }
 
