@@ -93,7 +93,6 @@ ul {
     padding: 1rem 2rem;
     background-color: #bcbcb7;
     color: #181817;
-    border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
     margin-top: 2rem;
@@ -116,7 +115,6 @@ ul {
     gap: 1.5rem;
     color: #e5e5e1;
     text-decoration: none;
-    border-radius: 4px;
     font-size: 1.2rem;
     padding: 0 0 1rem 0;
 }
@@ -169,7 +167,6 @@ ul {
 #archive-header ul a {
     text-decoration: none;
     color: #b0b0a6;
-    border-radius: 4px;
     font-weight: bold;
     font-size: 1.25rem;
 }
