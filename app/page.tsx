@@ -1,6 +1,9 @@
+import logo from "../assets/logo.jpg";
+
 export default function HomePage() {
     return (
         <div id="home">
+            <img src={logo.src} alt="A newspaper" />
             <p>
                 In recent years, the global energy landscape has been undergoing
                 a significant transformation, driven by advancements in
