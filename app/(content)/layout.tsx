@@ -2,8 +2,8 @@ import MainHeader from "@/app/components/MainHeader";
 import "@/app/globals.css";
 
 export const metadata = {
-    title: "Routing",
-    description: "Learn how to route to different pages.",
+    title: "REAL NEWS",
+    description: "Definitely not fake news.",
 };
 
 export default function RootLayout({ children }) {
