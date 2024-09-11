@@ -1,5 +1,5 @@
-import MainHeader from "./components/MainHeader";
-import "./globals.css";
+import MainHeader from "@/app/components/MainHeader";
+import "@/app/globals.css";
 
 export const metadata = {
     title: "Routing",

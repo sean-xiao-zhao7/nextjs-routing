@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { DUMMY_NEWS } from "../../../data/news-articles";
+import { DUMMY_NEWS } from "@/data/news-articles";
 import Link from "next/link";
 
 export default function NewsDetailsPage({ params }: { params: any }) {

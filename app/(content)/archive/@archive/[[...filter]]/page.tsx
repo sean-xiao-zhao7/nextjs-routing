@@ -1,9 +1,6 @@
-import { DUMMY_NEWS } from "../../../../data/news-articles";
-import {
-    getAvailableNewsYears,
-    getNewsForYearAndMonth,
-} from "../../../../lib/news";
-import NewsList from "../../../components/NewList";
+import { DUMMY_NEWS } from "@/data/news-articles";
+import { getAvailableNewsYears, getNewsForYearAndMonth } from "@/lib/news";
+import NewsList from "@/app/components/NewList";
 import Link from "next/link";
 
 export default function YearNewsPage({ params }) {

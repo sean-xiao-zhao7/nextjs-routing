@@ -1,4 +1,5 @@
-import logo from "../assets/logo.jpg";
+import logo from "@/assets/logo.jpg";
+import Link from "next/link";
 
 export default function HomePage() {
     return (
@@ -25,6 +26,7 @@ export default function HomePage() {
                 technological advancements, economies of scale, and increased
                 competition within the market.
             </p>
+            <Link href="/news">Go to news index</Link>
         </div>
     );
 }
