@@ -1,6 +1,23 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import NewsList from "@/app/components/NewList";
-import { DUMMY_NEWS } from "@/data/news-articles";
 
 export default function NewsPage() {
-    return <NewsList newsList={DUMMY_NEWS} />;
+    const [news, setNews] = useState([]);
+
+    useEffect(() => {
+        const getNews = async function () {
+            const response = await fetch("http://localhost:8080/news");
+            const result = await response.json();
+            setNews(result);
+        };
+        getNews();
+    }, []);
+
+    if (news.length <= 0) {
+        return <>Loading...</>;
+    }
+
+    return <NewsList newsList={news} />;
 }
