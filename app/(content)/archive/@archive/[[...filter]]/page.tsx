@@ -3,8 +3,8 @@ import { getAvailableNewsYears, getNewsForYearAndMonth } from "@/lib/news";
 import NewsList from "@/app/components/NewList";
 import Link from "next/link";
 
-export default function YearNewsPage({ params }) {
-    const years = getAvailableNewsYears();
+export default async function YearNewsPage({ params }) {
+    const years = await getAvailableNewsYears();
     let content = null;
 
     if (params.filter) {
@@ -14,7 +14,7 @@ export default function YearNewsPage({ params }) {
                 news.date.includes(params.filter[0].toString())
             );
         } else if (params.filter[1]) {
-            newsList = getNewsForYearAndMonth(
+            newsList = await getNewsForYearAndMonth(
                 params.filter[0],
                 params.filter[1]
             );
