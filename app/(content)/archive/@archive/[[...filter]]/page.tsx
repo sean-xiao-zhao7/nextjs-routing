@@ -1,5 +1,8 @@
-import { DUMMY_NEWS } from "@/data/news-articles";
-import { getAvailableNewsYears, getNewsForYearAndMonth } from "@/lib/news";
+import {
+    getAllNews,
+    getAvailableNewsYears,
+    getNewsForYearAndMonth,
+} from "@/lib/news";
 import NewsList from "@/app/components/NewList";
 import Link from "next/link";
 
@@ -10,7 +13,8 @@ export default async function YearNewsPage({ params }) {
     if (params.filter) {
         let newsList = [];
         if (params.filter[0]) {
-            newsList = DUMMY_NEWS.filter((news) =>
+            newsList = await getAllNews();
+            newsList = newsList.filter((news) =>
                 news.date.includes(params.filter[0].toString())
             );
         } else if (params.filter[1]) {
