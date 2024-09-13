@@ -5,13 +5,12 @@ import {
 } from "@/lib/news";
 import NewsList from "@/app/components/NewList";
 import Link from "next/link";
+import { Suspense } from "react";
 
-export default async function YearNewsPage({ params }) {
-    const years = await getAvailableNewsYears();
-    let content = null;
+async function NewsArchiveContent({ params }) {
+    let newsList = [];
 
     if (params.filter) {
-        let newsList = [];
         if (params.filter[0]) {
             newsList = await getAllNews();
             newsList = newsList.filter((news) =>
@@ -23,13 +22,20 @@ export default async function YearNewsPage({ params }) {
                 params.filter[1]
             );
         }
-
-        if (newsList.length <= 0) {
-            content = <p>No articles.</p>;
-        } else {
-            content = <NewsList newsList={newsList} />;
-        }
     }
+
+    let content;
+    if (newsList.length <= 0) {
+        content = <p>No articles.</p>;
+    } else {
+        content = <NewsList newsList={newsList} />;
+    }
+
+    return content;
+}
+
+export default async function YearNewsPage({ params }) {
+    const years = await getAvailableNewsYears();
 
     return (
         <>
@@ -44,7 +50,9 @@ export default async function YearNewsPage({ params }) {
                     </ul>
                 </nav>
             </header>
-            {content}
+            <Suspense fallback={<p>Loading archived year news.</p>}>
+                <NewsArchiveContent params={params} />
+            </Suspense>
         </>
     );
 }
