@@ -19,7 +19,8 @@ export default function HomePage() {
                 in this arena is the continued decline in the cost of renewable
                 energy technologies.
             </p>
-            <Link href="/news">Go to news index</Link>
+            <Link href="/news">Go to news index</Link>{" "}
+            <Link href="/news">Go to mutation test</Link>
         </div>
     );
 }
