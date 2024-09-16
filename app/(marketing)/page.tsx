@@ -1,9 +1,8 @@
 import logo from "@/assets/logo.jpg";
-import Link from "next/link";
 
 export default function HomePage() {
     return (
-        <div id="home">
+        <>
             <img src={logo.src} alt="A newspaper" />
             <p>
                 In recent years, the global energy landscape has been undergoing
@@ -19,8 +18,6 @@ export default function HomePage() {
                 in this arena is the continued decline in the cost of renewable
                 energy technologies.
             </p>
-            <Link href="/news">Go to news index</Link>{" "}
-            <Link href="/testing">Go to testing</Link>
-        </div>
+        </>
     );
 }
