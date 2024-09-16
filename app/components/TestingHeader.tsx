@@ -1,28 +1,25 @@
 import Link from "next/link";
 
-export default function MainHeader() {
+export default function TestingHeader() {
     return (
         <header id="main-header">
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">MAIN HOME</Link>
+                        <Link href="/">Main home</Link>
                     </li>
                     <li>
-                        <Link href="/news">NEWS HOME</Link>
+                        <Link href="/news">News home</Link>
                     </li>
                     <li>
-                        <Link href="/testing">TESTING HOME</Link>
+                        <Link href="/testing">Testing home</Link>
                     </li>
                 </ul>
             </nav>
             <nav>
                 <ul>
                     <li>
-                        <Link href="/news">ALL NEWS</Link>
-                    </li>
-                    <li>
-                        <Link href="/archive">OLD NEWS</Link>
+                        <Link href="/testing/mutation">Mutation Testing</Link>
                     </li>
                 </ul>
             </nav>

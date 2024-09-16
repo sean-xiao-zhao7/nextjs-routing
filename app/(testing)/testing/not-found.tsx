@@ -1,4 +1,4 @@
-export default function NotFoundPage() {
+export default function TestingNotFoundPage() {
     return (
         <div id="error">
             <h1>Not Found</h1>
