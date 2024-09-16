@@ -20,7 +20,7 @@ export default function HomePage() {
                 energy technologies.
             </p>
             <Link href="/news">Go to news index</Link>{" "}
-            <Link href="/news">Go to mutation test</Link>
+            <Link href="/mutation">Go to mutation test</Link>
         </div>
     );
 }
