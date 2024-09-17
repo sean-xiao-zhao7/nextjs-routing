@@ -3,7 +3,6 @@ import Stack from "@mui/material/Stack";
 
 import AddIcon from "@mui/icons-material/Add";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import InputLabel from "@mui/material/InputLabel";
 
 import UploadButton from "@/app/components/utils/VisuallyHiddenInput";
 
@@ -24,14 +23,6 @@ export default function MutationTestIndexPage() {
                             },
                         }}
                     />
-                    <Stack spacing={0} direction={"row"} marginTop={0}>
-                        <Box>
-                            <InputLabel htmlFor="input-with-icon-adornment">
-                                Image URL
-                            </InputLabel>
-                            <UploadButton id="title" text="Choose file" />
-                        </Box>
-                    </Stack>
                     <TextField
                         id="content"
                         label="Content"
@@ -44,6 +35,11 @@ export default function MutationTestIndexPage() {
                         multiline
                         rows={5}
                     />
+                    <Stack spacing={0} direction={"row"} marginTop={0}>
+                        <Box>
+                            <UploadButton id="title" text="Upload image" />
+                        </Box>
+                    </Stack>
                     <Stack spacing={1} direction={"row-reverse"}>
                         <Button variant="contained" startIcon={<AddIcon />}>
                             Submit

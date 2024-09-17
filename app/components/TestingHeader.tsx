@@ -6,13 +6,13 @@ export default function TestingHeader() {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">Main home</Link>
+                        <Link href="/">MAIN HOME</Link>
                     </li>
                     <li>
-                        <Link href="/news">News home</Link>
+                        <Link href="/news">NEWS HOME</Link>
                     </li>
                     <li>
-                        <Link href="/testing">Testing home</Link>
+                        <Link href="/testing">TESTING HOME</Link>
                     </li>
                 </ul>
             </nav>
@@ -22,7 +22,9 @@ export default function TestingHeader() {
                         <Link href="/testing/mutation">Mutation Testing</Link>
                     </li>
                     <li>
-                        <Link href="/database">Database management</Link>
+                        <Link href="/testing/database">
+                            Database management
+                        </Link>
                     </li>
                 </ul>
             </nav>
