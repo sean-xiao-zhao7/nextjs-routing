@@ -41,6 +41,8 @@ export default function MutationTestIndexPage() {
                                 shrink: true,
                             },
                         }}
+                        multiline
+                        rows={5}
                     />
                     <Stack spacing={1} direction={"row-reverse"}>
                         <Button variant="contained" startIcon={<AddIcon />}>
