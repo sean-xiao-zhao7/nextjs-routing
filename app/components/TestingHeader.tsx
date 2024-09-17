@@ -21,6 +21,9 @@ export default function TestingHeader() {
                     <li>
                         <Link href="/testing/mutation">Mutation Testing</Link>
                     </li>
+                    <li>
+                        <Link href="/database">Database management</Link>
+                    </li>
                 </ul>
             </nav>
         </header>

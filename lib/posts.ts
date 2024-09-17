@@ -2,7 +2,7 @@ import sql from "better-sqlite3";
 
 const db = new sql("data/posts.db");
 
-function initDb() {
+export function initPostsDb() {
     db.exec(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY, 
@@ -45,7 +45,7 @@ function initDb() {
     }
 }
 
-initDb();
+initPostsDb();
 
 export async function getPosts(maxNumber) {
     let limitClause = "";
