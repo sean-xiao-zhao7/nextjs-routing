@@ -8,14 +8,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body>
-                <div id="home">
-                    {children}
-                    <Link href="/news">Go to news index</Link>{" "}
-                    <Link href="/testing">Go to testing</Link>
-                </div>
-            </body>
-        </html>
+        <>
+            <div id="home">
+                {children}
+                <Link href="/news">Go to news index</Link>{" "}
+                <Link href="/testing">Go to testing</Link>
+            </div>
+        </>
     );
 }

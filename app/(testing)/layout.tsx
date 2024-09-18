@@ -13,14 +13,10 @@ const roboto = Roboto({
 
 export default function RootLayout(props: React.PropsWithChildren) {
     return (
-        <html lang="en">
-            <body className={roboto.variable}>
-                <AppRouterCacheProvider>
-                    <ThemeProvider theme={theme}>
-                        {props.children}
-                    </ThemeProvider>
-                </AppRouterCacheProvider>
-            </body>
-        </html>
+        <div className={roboto.variable}>
+            <AppRouterCacheProvider>
+                <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+            </AppRouterCacheProvider>
+        </div>
     );
 }
