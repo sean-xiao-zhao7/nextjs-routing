@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, Paper, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
@@ -7,10 +9,14 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UploadButton from "@/app/components/utils/VisuallyHiddenInput";
 
 export default function MutationTestIndexPage() {
+    const mutationAction = (formData: FormData) => {
+        const title = formData.get("title");
+    };
+
     return (
         <>
             <h1>Mutation testing page</h1>
-            <form>
+            <form action={mutationAction}>
                 <Paper sx={{ padding: 2 }}>
                     <Stack spacing={2}>
                         <h2>Add a new post</h2>
@@ -24,6 +30,7 @@ export default function MutationTestIndexPage() {
                                     shrink: true,
                                 },
                             }}
+                            name="title"
                         />
                         <TextField
                             id="content"
@@ -36,6 +43,7 @@ export default function MutationTestIndexPage() {
                             }}
                             multiline
                             rows={5}
+                            name="content"
                         />
                         <Stack spacing={0} direction={"row"} marginTop={0}>
                             <Box>
@@ -43,7 +51,11 @@ export default function MutationTestIndexPage() {
                             </Box>
                         </Stack>
                         <Stack spacing={1} direction={"row-reverse"}>
-                            <Button variant="contained" startIcon={<AddIcon />}>
+                            <Button
+                                variant="contained"
+                                startIcon={<AddIcon />}
+                                type="submit"
+                            >
                                 Submit
                             </Button>
                             <Button
