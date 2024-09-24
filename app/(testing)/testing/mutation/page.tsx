@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Button, Paper, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
@@ -8,9 +6,11 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 import UploadButton from "@/app/components/utils/VisuallyHiddenInput";
 
-export default function MutationTestIndexPage() {
-    const mutationAction = (formData: FormData) => {
+export default async function MutationTestIndexPage() {
+    const mutationAction = async (formData: FormData) => {
+        "use server";
         const title = formData.get("title");
+        console.log(title);
     };
 
     return (
