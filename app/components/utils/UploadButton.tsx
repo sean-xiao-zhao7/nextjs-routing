@@ -31,6 +31,7 @@ export default function UploadButton(props) {
                 onChange={(event) => console.log(event.target.files)}
                 multiple
                 id={props.id}
+                name={props.name}
             />
         </Button>
     );
