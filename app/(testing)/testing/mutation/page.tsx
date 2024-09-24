@@ -1,16 +1,28 @@
 import { Box, Button, Paper, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
-
 import AddIcon from "@mui/icons-material/Add";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UploadButton from "@/app/components/utils/UploadButton";
+import { storePost } from "@/lib/posts";
+import { File } from "buffer";
 
 export default async function MutationTestIndexPage() {
     const mutationAction = async (formData: FormData) => {
         "use server";
         const title = formData.get("title");
         const content = formData.get("content");
-        const imageUrl = formData.get("image-url");
+        let imageFile = formData.get("image-file");
+        let imageUrl = "";
+        if (imageFile instanceof File && imageFile.size > 0) {
+            imageUrl = imageFile.name;
+        }
+
+        const userId = 1;
+
+        const result = await storePost({ title, content, imageUrl, userId });
+        if (!result) {
+            throw new Error("Error storing post with title " + title);
+        }
     };
 
     return (
@@ -48,9 +60,9 @@ export default async function MutationTestIndexPage() {
                         <Stack spacing={0} direction={"row"} marginTop={0}>
                             <Box>
                                 <UploadButton
-                                    id="title"
+                                    id="image-file"
                                     text="Upload image"
-                                    name="image-url"
+                                    name="image-file"
                                 />
                             </Box>
                         </Stack>
