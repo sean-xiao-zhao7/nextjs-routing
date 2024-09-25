@@ -1,10 +1,9 @@
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Paper, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import AddIcon from "@mui/icons-material/Add";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import UploadButton from "@/app/components/utils/UploadButton";
 import { storePost } from "@/lib/posts";
 import { File } from "buffer";
+import FormSubmit from "@/app/components/form/FormSubmit";
 
 export default async function MutationTestIndexPage() {
     const mutationAction = async (formData: FormData) => {
@@ -67,23 +66,12 @@ export default async function MutationTestIndexPage() {
                             </Box>
                         </Stack>
                         <Stack spacing={1} direction={"row-reverse"}>
-                            <Button
-                                variant="contained"
-                                startIcon={<AddIcon />}
-                                type="submit"
-                            >
-                                Submit
-                            </Button>
-                            <Button
-                                variant="text"
-                                startIcon={<RestartAltIcon />}
-                            >
-                                Reset
-                            </Button>
+                            <FormSubmit />
                         </Stack>
                     </Stack>
                 </Paper>
             </form>
+            <div></div>
         </>
     );
 }
