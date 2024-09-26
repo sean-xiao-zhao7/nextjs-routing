@@ -1,18 +1,10 @@
-"use client";
-
-import { useActionState } from "react";
 import { File } from "buffer";
 
-import { Box, Paper, TextField } from "@mui/material";
-import Stack from "@mui/material/Stack";
-
-import UploadButton from "@/app/components/utils/UploadButton";
-import FormSubmit from "@/app/components/form/FormSubmit";
-
 import { storePost } from "@/lib/posts";
+import PostForm from "@/app/components/form/PostForm";
 
 export default async function MutationTestIndexPage() {
-    const mutationAction = async (previousState, formData: FormData) => {
+    async function mutationAction(_, formData: FormData) {
         "use server";
         const title = formData.get("title");
         const content = formData.get("content");
@@ -28,62 +20,7 @@ export default async function MutationTestIndexPage() {
         if (!result) {
             throw new Error("Error storing post with title " + title);
         }
+    }
 
-        return formData;
-    };
-
-    const [formState, formAction] = useActionState(mutationAction, {});
-
-    return (
-        <>
-            <h1>Mutation testing page</h1>
-            <form action={formAction}>
-                <Paper sx={{ padding: 2 }}>
-                    <Stack spacing={2}>
-                        <h2>Add a new post</h2>
-
-                        <TextField
-                            id="title"
-                            label="Title"
-                            variant="outlined"
-                            slotProps={{
-                                inputLabel: {
-                                    shrink: true,
-                                },
-                            }}
-                            name="title"
-                            required
-                        />
-                        <TextField
-                            id="content"
-                            label="Content"
-                            variant="outlined"
-                            slotProps={{
-                                inputLabel: {
-                                    shrink: true,
-                                },
-                            }}
-                            multiline
-                            rows={5}
-                            name="content"
-                            required
-                        />
-                        <Stack spacing={0} direction={"row"} marginTop={0}>
-                            <Box>
-                                <UploadButton
-                                    id="image-file"
-                                    text="Upload image"
-                                    name="image-file"
-                                />
-                            </Box>
-                        </Stack>
-                        <Stack spacing={1} direction={"row-reverse"}>
-                            <FormSubmit />
-                        </Stack>
-                    </Stack>
-                </Paper>
-            </form>
-            <div></div>
-        </>
-    );
+    return <PostForm mutationAction={mutationAction} />;
 }
