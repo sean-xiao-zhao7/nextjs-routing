@@ -1,12 +1,18 @@
+"use client";
+
+import { useActionState } from "react";
+import { File } from "buffer";
+
 import { Box, Paper, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
+
 import UploadButton from "@/app/components/utils/UploadButton";
-import { storePost } from "@/lib/posts";
-import { File } from "buffer";
 import FormSubmit from "@/app/components/form/FormSubmit";
 
+import { storePost } from "@/lib/posts";
+
 export default async function MutationTestIndexPage() {
-    const mutationAction = async (formData: FormData) => {
+    const mutationAction = async (previousState, formData: FormData) => {
         "use server";
         const title = formData.get("title");
         const content = formData.get("content");
@@ -22,12 +28,16 @@ export default async function MutationTestIndexPage() {
         if (!result) {
             throw new Error("Error storing post with title " + title);
         }
+
+        return formData;
     };
+
+    const [formState, formAction] = useActionState(mutationAction, {});
 
     return (
         <>
             <h1>Mutation testing page</h1>
-            <form action={mutationAction}>
+            <form action={formAction}>
                 <Paper sx={{ padding: 2 }}>
                     <Stack spacing={2}>
                         <h2>Add a new post</h2>
@@ -42,6 +52,7 @@ export default async function MutationTestIndexPage() {
                                 },
                             }}
                             name="title"
+                            required
                         />
                         <TextField
                             id="content"
@@ -55,6 +66,7 @@ export default async function MutationTestIndexPage() {
                             multiline
                             rows={5}
                             name="content"
+                            required
                         />
                         <Stack spacing={0} direction={"row"} marginTop={0}>
                             <Box>
