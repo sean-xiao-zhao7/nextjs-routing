@@ -1,5 +1,8 @@
+import Stack from "@mui/material/Stack";
+
 import { getPosts } from "@/lib/posts";
 import { PostType } from "@/src/types/post-type";
+import SinglePostListItem from "./SinglePostListItem";
 
 export default async function PostsList({
     customList,
@@ -13,15 +16,10 @@ export default async function PostsList({
     }
 
     return (
-        <ul>
+        <Stack spacing={2}>
             {finalList.map((post) => {
-                return (
-                    <li key={post.title}>
-                        <h2>{post.title}</h2>
-                        <p>{post.content}</p>
-                    </li>
-                );
+                return <SinglePostListItem post={post} key={post.title} />;
             })}
-        </ul>
+        </Stack>
     );
 }
