@@ -103,6 +103,5 @@ export function deleteSinglePost(postId: Number) {
   DELETE FROM posts
   WHERE id = ?`);
     const result = stmt.run(postId);
-    console.log(result);
     return result;
 }
