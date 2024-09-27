@@ -2,6 +2,7 @@ import { File } from "buffer";
 
 import { storePost } from "@/lib/posts";
 import PostForm from "@/app/components/form/PostForm";
+import PostsList from "@/app/components/posts/PostsList";
 
 export default async function MutationTestIndexPage() {
     async function mutationAction(_, formData: FormData) {
@@ -41,5 +42,10 @@ export default async function MutationTestIndexPage() {
         return { title, content, imageUrl, userId };
     }
 
-    return <PostForm mutationAction={mutationAction} />;
+    return (
+        <>
+            <PostForm mutationAction={mutationAction} />
+            <PostsList customList={false} />
+        </>
+    );
 }
