@@ -16,10 +16,23 @@ export default async function PostsList({
     }
 
     return (
-        <Stack spacing={2}>
-            {finalList.map((post) => {
-                return <SinglePostListItem post={post} key={post.title} />;
-            })}
-        </Stack>
+        <>
+            {finalList.length <= 0 && <p>No posts</p>}
+            {finalList.length > 0 && (
+                <>
+                    <h2>Posts</h2>
+                    <Stack spacing={2}>
+                        {finalList.map((post) => {
+                            return (
+                                <SinglePostListItem
+                                    post={post}
+                                    key={post.title}
+                                />
+                            );
+                        })}
+                    </Stack>
+                </>
+            )}
+        </>
     );
 }

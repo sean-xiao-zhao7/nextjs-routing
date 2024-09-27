@@ -1,4 +1,5 @@
 import { File } from "buffer";
+import { Stack } from "@mui/material";
 
 import { storePost } from "@/lib/posts";
 import PostForm from "@/app/components/form/PostForm";
@@ -43,9 +44,9 @@ export default async function MutationTestIndexPage() {
     }
 
     return (
-        <>
+        <Stack spacing={2}>
             <PostForm mutationAction={mutationAction} />
             <PostsList customList={false} />
-        </>
+        </Stack>
     );
 }
