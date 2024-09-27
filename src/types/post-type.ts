@@ -3,4 +3,5 @@ export type PostType = {
     content: string;
     imageUrl: string;
     userId: Number;
+    id: Number;
 };

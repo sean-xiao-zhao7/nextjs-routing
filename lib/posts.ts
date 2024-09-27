@@ -97,3 +97,12 @@ export async function updatePostLikeStatus(postId, userId) {
         return stmt.run(userId, postId);
     }
 }
+
+export function deleteSinglePost(postId: Number) {
+    const stmt = db.prepare(`
+  DELETE FROM posts
+  WHERE id = ?`);
+    const result = stmt.run(postId);
+    console.log(result);
+    return result;
+}
