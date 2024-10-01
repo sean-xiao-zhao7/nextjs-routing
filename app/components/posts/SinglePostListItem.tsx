@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { Paper, Stack } from "@mui/material";
 
 import { PostType } from "@/src/types/post-type";
@@ -8,6 +9,7 @@ export default function SinglePostListItem({ post }: { post: PostType }) {
     const deletePostHandler = async () => {
         "use server";
         deleteSinglePost(post.id);
+        revalidatePath("testing/mutation");
     };
 
     return (

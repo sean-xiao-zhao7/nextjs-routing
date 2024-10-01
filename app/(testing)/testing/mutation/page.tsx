@@ -8,7 +8,7 @@ import PostForm from "@/app/components/form/PostForm";
 import PostsList from "@/app/components/posts/PostsList";
 
 export default async function MutationTestIndexPage() {
-    async function mutationAction(_, formData: FormData) {
+    async function mutationAction(prevState, formData: FormData) {
         "use server";
         let errors = [];
 
@@ -44,7 +44,7 @@ export default async function MutationTestIndexPage() {
 
         revalidatePath("testing/mutation");
 
-        return { title, content, imageUrl, userId };
+        return { title: "", content: "", imageUrl: "", userId: "" };
     }
 
     return (

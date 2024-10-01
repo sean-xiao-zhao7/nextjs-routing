@@ -8,7 +8,12 @@ import UploadButton from "@/app/components/utils/UploadButton";
 import FormSubmit from "@/app/components/form/FormSubmit";
 
 export default function PostForm({ mutationAction }) {
-    const [formState, formAction] = useFormState(mutationAction, {});
+    const [formState, formAction] = useFormState(mutationAction, {
+        title: "",
+        content: "",
+        imageUrl: "",
+        userId: 1,
+    });
 
     return (
         <>
@@ -29,6 +34,7 @@ export default function PostForm({ mutationAction }) {
                             }}
                             name="title"
                             required
+                            defaultValue={formState.title}
                         />
                         <TextField
                             id="content"
@@ -43,6 +49,7 @@ export default function PostForm({ mutationAction }) {
                             rows={5}
                             name="content"
                             required
+                            defaultValue={formState.content}
                         />
                         <Stack spacing={0} direction={"row"} marginTop={0}>
                             <Box>
