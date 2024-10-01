@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 import { File } from "buffer";
 import { Stack } from "@mui/material";
 
@@ -39,6 +41,8 @@ export default async function MutationTestIndexPage() {
             errors.push("Could not save post due to server error.");
             return { errors };
         }
+
+        revalidatePath("testing/mutation");
 
         return { title, content, imageUrl, userId };
     }
