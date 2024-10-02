@@ -9,19 +9,19 @@ import FormSubmit from "@/app/components/form/FormSubmit";
 import { useRef } from "react";
 
 export default function PostForm({ mutationAction }) {
-    const [formState, formAction] = useFormState(mutationAction, {
-        title: "",
-        content: "",
-        imageUrl: "",
-        userId: 1,
-    });
-
     const formRef: React.RefObject<HTMLFormElement> = useRef();
     const resetFormHandler = () => {
         if (formRef && formRef.current) {
             formRef.current.reset();
         }
     };
+
+    const [formState, formAction] = useFormState(mutationAction, {
+        title: "",
+        content: "",
+        imageUrl: "",
+        userId: 1,
+    });
 
     return (
         <>

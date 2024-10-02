@@ -10,6 +10,7 @@ import PostsList from "@/app/components/posts/PostsList";
 export default async function MutationTestIndexPage() {
     async function mutationAction(prevState, formData: FormData) {
         "use server";
+
         let errors = [];
 
         const title = formData.get("title");
