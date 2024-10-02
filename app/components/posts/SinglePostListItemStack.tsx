@@ -3,15 +3,21 @@ import { useState } from "react";
 
 import { Paper, Stack } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
-
-import BackendIconButton from "../buttons/BackendIconButton";
+import { IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function SinglePostListItemStack({ post, deletePostHandler }) {
-    const [done, setDone] = useState(false);
+    const [deleting, setDeleting] = useState(false);
+
+    const handler = async () => {
+        setDeleting(true);
+        await deletePostHandler();
+        setDeleting(false);
+    };
 
     return (
         <Paper sx={{ padding: 2 }}>
-            <LinearProgress color="error" />
+            {deleting && <LinearProgress color="error" />}
             <Stack
                 direction="row"
                 spacing={2}
@@ -21,7 +27,13 @@ export default function SinglePostListItemStack({ post, deletePostHandler }) {
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
                 </div>
-                <BackendIconButton backendFunction={deletePostHandler} />
+                <IconButton
+                    aria-label="delete"
+                    onClick={handler}
+                    disabled={deleting}
+                >
+                    <DeleteIcon />
+                </IconButton>
             </Stack>
         </Paper>
     );

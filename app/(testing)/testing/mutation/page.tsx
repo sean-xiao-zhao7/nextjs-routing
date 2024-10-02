@@ -39,12 +39,12 @@ export default async function MutationTestIndexPage() {
         const result = await storePost({ title, content, imageUrl, userId });
         if (!result) {
             errors.push("Could not save post due to server error.");
-            return { errors };
+            return { errors, done: false };
         }
 
         revalidatePath("testing/mutation");
 
-        return { title: "", content: "", imageUrl: "", userId: "" };
+        return { title: "", content: "", imageUrl: "", userId: "", done: true };
     }
 
     return (
