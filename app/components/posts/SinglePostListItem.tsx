@@ -1,9 +1,8 @@
 import { revalidatePath } from "next/cache";
-import { Paper, Stack } from "@mui/material";
 
 import { PostType } from "@/src/types/post-type";
 import { deleteSinglePost } from "@/lib/posts";
-import BackendIconButton from "../buttons/BackendIconButton";
+import SinglePostListItemStack from "./SinglePostListItemStack";
 
 export default function SinglePostListItem({ post }: { post: PostType }) {
     const deletePostHandler = async () => {
@@ -13,18 +12,9 @@ export default function SinglePostListItem({ post }: { post: PostType }) {
     };
 
     return (
-        <Paper sx={{ padding: 2 }}>
-            <Stack
-                direction="row"
-                spacing={2}
-                sx={{ justifyContent: "space-between" }}
-            >
-                <div>
-                    <h2>{post.title}</h2>
-                    <p>{post.content}</p>
-                </div>
-                <BackendIconButton backendFunction={deletePostHandler} />
-            </Stack>
-        </Paper>
+        <SinglePostListItemStack
+            post={post}
+            deletePostHandler={deletePostHandler}
+        />
     );
 }
