@@ -11,8 +11,10 @@ export default function SinglePostListItemStack({ post, deletePostHandler }) {
 
     const handler = async () => {
         setDeleting(true);
-        await deletePostHandler();
-        setDeleting(false);
+        const result = await deletePostHandler();
+        if (result) {
+            setDeleting(false);
+        }
     };
 
     return (

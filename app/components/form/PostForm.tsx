@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 
 import UploadButton from "@/app/components/utils/UploadButton";
 import FormSubmit from "@/app/components/form/FormSubmit";
+import { useRef } from "react";
 
 export default function PostForm({ mutationAction }) {
     const [formState, formAction] = useFormState(mutationAction, {
@@ -15,10 +16,17 @@ export default function PostForm({ mutationAction }) {
         userId: 1,
     });
 
+    const formRef: React.RefObject<HTMLFormElement> = useRef();
+    const resetFormHandler = () => {
+        if (formRef && formRef.current) {
+            formRef.current.reset();
+        }
+    };
+
     return (
         <>
             <h1>Mutation testing page</h1>
-            <form action={formAction}>
+            <form action={formAction} ref={formRef}>
                 <Paper sx={{ padding: 2 }}>
                     <Stack spacing={2}>
                         <h2>Add a new post</h2>
@@ -34,7 +42,6 @@ export default function PostForm({ mutationAction }) {
                             }}
                             name="title"
                             required
-                            defaultValue={formState.title}
                         />
                         <TextField
                             id="content"
@@ -68,7 +75,7 @@ export default function PostForm({ mutationAction }) {
                             </ul>
                         )}
                         <Stack spacing={1} direction={"row-reverse"}>
-                            <FormSubmit />
+                            <FormSubmit resetFormHandler={resetFormHandler} />
                         </Stack>
                     </Stack>
                 </Paper>

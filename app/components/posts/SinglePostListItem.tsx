@@ -7,8 +7,9 @@ import SinglePostListItemStack from "./SinglePostListItemStack";
 export default function SinglePostListItem({ post }: { post: PostType }) {
     const deletePostHandler = async () => {
         "use server";
-        deleteSinglePost(post.id);
+        await deleteSinglePost(post.id);
         revalidatePath("testing/mutation");
+        return true;
     };
 
     return (
