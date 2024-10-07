@@ -1,6 +1,7 @@
+import { Stack } from "@mui/material";
+
 import MyPaper from "@/app/components/containers/MyPaper";
 import { fetchAllMessages } from "@/lib/messages";
-import { Stack } from "@mui/material";
 
 export default async function CachingPage() {
     const messages = await fetchAllMessages();
