@@ -11,3 +11,8 @@ export const fetchAllMessages = async () => {
         throw new Error("Unable to fetch from backend.");
     }
 };
+
+export type MessageType = {
+    id: Number;
+    text: String;
+};
