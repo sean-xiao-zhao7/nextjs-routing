@@ -19,6 +19,9 @@ export default function TestingHeader() {
             <nav>
                 <ul>
                     <li>
+                        <Link href="/testing/caching">Caching Testing</Link>
+                    </li>
+                    <li>
                         <Link href="/testing/mutation">Mutation Testing</Link>
                     </li>
                     <li>
