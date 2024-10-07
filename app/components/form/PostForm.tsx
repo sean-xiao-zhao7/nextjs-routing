@@ -4,7 +4,7 @@ import { useFormState } from "react-dom";
 import { Box, Paper, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
-import UploadButton from "@/app/components/utils/UploadButton";
+import UploadButton from "@/app/components/buttons/UploadButton";
 import FormSubmit from "@/app/components/form/FormSubmit";
 import { useRef } from "react";
 
