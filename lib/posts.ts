@@ -1,3 +1,4 @@
+import { cache } from "react";
 import sql from "better-sqlite3";
 
 const db = new sql("data/posts.db");
@@ -47,7 +48,7 @@ export function initPostsDb() {
 
 initPostsDb();
 
-export async function getPosts(maxNumber) {
+export const getPosts = cache(async function getPosts(maxNumber) {
     let limitClause = "";
 
     if (maxNumber) {
@@ -65,7 +66,7 @@ export async function getPosts(maxNumber) {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return maxNumber ? stmt.all(maxNumber) : stmt.all();
-}
+});
 
 export async function storePost(post) {
     const stmt = db.prepare(`
