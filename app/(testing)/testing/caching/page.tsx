@@ -3,6 +3,8 @@ import { Stack } from "@mui/material";
 import MyPaper from "@/app/components/containers/MyPaper";
 import { MessageType, fetchAllMessages } from "@/lib/messages";
 
+export const dynamic = "force-dynamic";
+
 export default async function CachingPage() {
     const messages = await fetchAllMessages("caching test");
 
