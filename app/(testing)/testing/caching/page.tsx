@@ -4,7 +4,7 @@ import MyPaper from "@/app/components/containers/MyPaper";
 import { MessageType, fetchAllMessages } from "@/lib/messages";
 
 export default async function CachingPage() {
-    const messages = await fetchAllMessages();
+    const messages = await fetchAllMessages("caching test");
 
     return (
         <>
