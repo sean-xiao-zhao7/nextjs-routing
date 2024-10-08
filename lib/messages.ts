@@ -5,6 +5,9 @@ export const fetchAllMessages = async (xid?: string) => {
             `http://${process.env.BACKEND_BASE_URL}:${process.env.BACKEND_PORT}/messages`,
             {
                 headers: { "X-ID": xid ? xid : "lib" },
+                next: {
+                    tags: ["messages"],
+                },
             }
         );
         const res = await result.json();

@@ -2,11 +2,11 @@ import { Stack } from "@mui/material";
 
 import MyPaper from "@/app/components/containers/MyPaper";
 import { MessageType, fetchAllMessages } from "@/lib/messages";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export default async function CachingPage() {
     const messages = await fetchAllMessages("caching test");
-    revalidatePath("testing/caching");
+    revalidateTag("messages");
     return (
         <>
             <h1>Caching Testing</h1>
