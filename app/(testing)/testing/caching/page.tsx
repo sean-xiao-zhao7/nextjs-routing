@@ -2,12 +2,11 @@ import { Stack } from "@mui/material";
 
 import MyPaper from "@/app/components/containers/MyPaper";
 import { MessageType, fetchAllMessages } from "@/lib/messages";
-
-export const dynamic = "force-dynamic";
+import { revalidatePath } from "next/cache";
 
 export default async function CachingPage() {
     const messages = await fetchAllMessages("caching test");
-
+    revalidatePath("testing/caching");
     return (
         <>
             <h1>Caching Testing</h1>
