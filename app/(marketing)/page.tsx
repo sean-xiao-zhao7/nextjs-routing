@@ -1,5 +1,11 @@
+"use client";
+
 import logo from "@/assets/logo.jpg";
 import Image from "next/image";
+
+function imageLoader(config) {
+    return config.src;
+}
 
 export default function HomePage() {
     return (
@@ -13,7 +19,13 @@ export default function HomePage() {
                     margin: "auto",
                 }}
             >
-                <Image src={logo} alt="A newspaper" priority fill />
+                <Image
+                    src={logo}
+                    alt="A newspaper"
+                    priority
+                    fill
+                    loader={imageLoader}
+                />
             </div>
             <p>
                 In recent years, the global energy landscape has been undergoing
