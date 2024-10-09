@@ -4,7 +4,17 @@ import Image from "next/image";
 export default function HomePage() {
     return (
         <>
-            <Image src={logo} alt="A newspaper" width={120} />
+            <div
+                style={{
+                    height: "12vw",
+                    width: "12vw",
+                    position: "relative",
+                    textAlign: "center",
+                    margin: "auto",
+                }}
+            >
+                <Image src={logo} alt="A newspaper" priority fill />
+            </div>
             <p>
                 In recent years, the global energy landscape has been undergoing
                 a significant transformation, driven by advancements in
