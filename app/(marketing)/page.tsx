@@ -1,9 +1,10 @@
 import logo from "@/assets/logo.jpg";
+import Image from "next/image";
 
 export default function HomePage() {
     return (
         <>
-            <img src={logo.src} alt="A newspaper" />
+            <Image src={logo} alt="A newspaper" width={120} />
             <p>
                 In recent years, the global energy landscape has been undergoing
                 a significant transformation, driven by advancements in
