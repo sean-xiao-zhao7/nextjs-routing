@@ -12,6 +12,11 @@ const roboto = Roboto({
     variable: "--font-roboto",
 });
 
+export const metadata = {
+    title: "REAL NEWS TEST",
+    description: "Testing for news.",
+};
+
 export default function RootLayout(props: React.PropsWithChildren) {
     return (
         <html lang="en">
