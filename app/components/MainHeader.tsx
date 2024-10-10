@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AccountButton from "./buttons/AccountButton";
 
 export default function MainHeader() {
     return (
@@ -27,11 +26,7 @@ export default function MainHeader() {
                         <Link href="/archive">OLD NEWS</Link>
                     </li>
                     <li>
-                        <Link href="/archive" className="avatar">
-                            <AccountCircleIcon
-                                sx={{ color: "white", fontSize: "2.5rem" }}
-                            />
-                        </Link>
+                        <AccountButton link="/archive" />
                     </li>
                 </ul>
             </nav>
