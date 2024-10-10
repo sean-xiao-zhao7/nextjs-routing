@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import Avatar from "@mui/material/Avatar";
-import LoginIcon from "@mui/icons-material/Login";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function TestingHeader() {
     return (
@@ -34,9 +33,9 @@ export default function TestingHeader() {
                     </li>
                     <li>
                         <Link href="/archive" className="avatar">
-                            <Avatar>
-                                <LoginIcon />
-                            </Avatar>
+                            <AccountCircleIcon
+                                sx={{ color: "white", fontSize: "2.5rem" }}
+                            />
                         </Link>
                     </li>
                 </ul>

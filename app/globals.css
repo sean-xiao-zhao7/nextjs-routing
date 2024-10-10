@@ -62,10 +62,11 @@ ul {
 }
 
 #main-header ul a.avatar {
+    display: flex;
     padding: 0;
 }
 
-#main-header ul a:hover,
+#main-header ul a:hover:not(.avatar),
 #main-header ul a.active {
     background-color: #bcbcb7;
     color: #181817;
