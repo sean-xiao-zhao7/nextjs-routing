@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 
-import { getPosts } from "@/src/lib/posts";
+import { getPosts } from "@/lib/postsDB";
 import { PostType } from "@/src/types/post-type";
 import SinglePostListItem from "./SinglePostListItem";
 

@@ -1,5 +1,5 @@
-import { initUsersDb } from "@/lib/users";
-import { initPostsDb } from "@/src/lib/posts";
+import { initUsersDb } from "@/lib/usersDB";
+import { initPostsDb } from "@/lib/postsDB";
 import { CoffeeMaker } from "@mui/icons-material";
 import { Button } from "@mui/material";
 
