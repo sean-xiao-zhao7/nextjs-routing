@@ -26,7 +26,7 @@ export default function MainHeader() {
                         <Link href="/archive">OLD NEWS</Link>
                     </li>
                     <li>
-                        <AccountButton link="/archive" />
+                        <AccountButton link="/login" />
                     </li>
                 </ul>
             </nav>

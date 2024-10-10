@@ -1,6 +1,6 @@
 import sql from "better-sqlite3";
 
-const db = sql("data/data.db");
+const db = sql("src/data/data.db");
 
 export async function getAllNews() {
     const news = db.prepare("SELECT * FROM news").all();

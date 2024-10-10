@@ -1,3 +1,10 @@
+import AuthHeader from "../components/headers/AuthHeader";
+
 export default function AuthLayout({ children }) {
-    return <>{children}</>;
+    return (
+        <>
+            <AuthHeader />
+            {children}
+        </>
+    );
 }
