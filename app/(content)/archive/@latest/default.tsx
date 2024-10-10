@@ -1,5 +1,5 @@
 import { getLatestNews } from "@/lib/news";
-import NewsList from "@/app/components/NewList";
+import NewsList from "@/app/components/news/NewsList";
 
 export default async function LatestPage() {
     return (

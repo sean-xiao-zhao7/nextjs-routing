@@ -3,7 +3,7 @@ import {
     getAvailableNewsYears,
     getNewsForYearAndMonth,
 } from "@/lib/news";
-import NewsList from "@/app/components/NewList";
+import NewsList from "@/app/components/news/NewsList";
 import Link from "next/link";
 import { Suspense } from "react";
 

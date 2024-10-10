@@ -1,5 +1,5 @@
 import { fetchAllMessages } from "@/lib/messages";
-import TestingHeader from "@/app/components/TestingHeader";
+import TestingHeader from "@/app/components/headers/TestingHeader";
 
 export default async function TestingLayout(props: React.PropsWithChildren) {
     const messages = await fetchAllMessages("testing layout");

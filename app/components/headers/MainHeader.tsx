@@ -1,7 +1,7 @@
 import Link from "next/link";
-import AccountButton from "./buttons/AccountButton";
+import AccountButton from "../buttons/AccountButton";
 
-export default function TestingHeader() {
+export default function MainHeader() {
     return (
         <header id="main-header">
             <nav>
@@ -20,15 +20,10 @@ export default function TestingHeader() {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/testing/caching">Caching Testing</Link>
+                        <Link href="/news">ALL NEWS</Link>
                     </li>
                     <li>
-                        <Link href="/testing/mutation">Mutation Testing</Link>
-                    </li>
-                    <li>
-                        <Link href="/testing/database">
-                            Database management
-                        </Link>
+                        <Link href="/archive">OLD NEWS</Link>
                     </li>
                     <li>
                         <AccountButton link="/archive" />
