@@ -1,14 +1,12 @@
 "use client";
+import { useRef } from "react";
 import { useFormState } from "react-dom";
 
-import { Box, Paper, TextField } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Paper, TextField, Stack } from "@mui/material";
 
-import UploadButton from "@/app/components/buttons/UploadButton";
 import FormSubmit from "@/app/components/form/FormSubmit";
-import { useRef } from "react";
 
-export default function PostForm({ mutationAction }) {
+export default function LoginForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
     const resetFormHandler = () => {
         if (formRef && formRef.current) {
@@ -17,56 +15,39 @@ export default function PostForm({ mutationAction }) {
     };
 
     const [formState, formAction] = useFormState(mutationAction, {
-        title: "",
-        content: "",
-        imageUrl: "",
-        userId: 1,
+        username: "",
+        password: "",
     });
 
     return (
         <>
-            <h1>Mutation testing page</h1>
             <form action={formAction} ref={formRef}>
                 <Paper sx={{ padding: 2 }}>
                     <Stack spacing={2}>
-                        <h2>Add a new post</h2>
-
                         <TextField
-                            id="title"
-                            label="Title"
+                            id="username"
+                            label="Username"
                             variant="outlined"
                             slotProps={{
                                 inputLabel: {
                                     shrink: true,
                                 },
                             }}
-                            name="title"
+                            name="username"
                             required
                         />
                         <TextField
-                            id="content"
-                            label="Content"
+                            id="password"
+                            label="Password"
                             variant="outlined"
                             slotProps={{
                                 inputLabel: {
                                     shrink: true,
                                 },
                             }}
-                            multiline
-                            rows={5}
-                            name="content"
+                            name="password"
                             required
-                            defaultValue={formState.content}
                         />
-                        <Stack spacing={0} direction={"row"} marginTop={0}>
-                            <Box>
-                                <UploadButton
-                                    id="image-file"
-                                    text="Upload image"
-                                    name="image-file"
-                                />
-                            </Box>
-                        </Stack>
                         {formState.errors && (
                             <ul className="form-errors">
                                 {formState.errors.map((error) => (
@@ -77,7 +58,7 @@ export default function PostForm({ mutationAction }) {
                         <Stack spacing={1} direction={"row-reverse"}>
                             <FormSubmit
                                 resetFormHandler={resetFormHandler}
-                                submitLabel={"Add post"}
+                                submitLabel={"Login"}
                             />
                         </Stack>
                     </Stack>

@@ -5,7 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-export default function FormSubmit({ resetFormHandler }) {
+export default function FormSubmit({ resetFormHandler, submitLabel }) {
     const status = useFormStatus();
 
     if (!status.pending) {
@@ -21,7 +21,7 @@ export default function FormSubmit({ resetFormHandler }) {
                 loading={status.pending}
                 loadingPosition="start"
             >
-                Submit
+                {submitLabel ? submitLabel : "Submit"}
             </LoadingButton>
             <LoadingButton
                 variant="text"
