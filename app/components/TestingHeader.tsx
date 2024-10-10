@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import Avatar from "@mui/material/Avatar";
+import LoginIcon from "@mui/icons-material/Login";
+
 export default function TestingHeader() {
     return (
         <header id="main-header">
@@ -27,6 +30,13 @@ export default function TestingHeader() {
                     <li>
                         <Link href="/testing/database">
                             Database management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/archive" className="avatar">
+                            <Avatar>
+                                <LoginIcon />
+                            </Avatar>
                         </Link>
                     </li>
                 </ul>

@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import Avatar from "@mui/material/Avatar";
+import LoginIcon from "@mui/icons-material/Login";
+
 export default function MainHeader() {
     return (
         <header id="main-header">
@@ -23,6 +26,13 @@ export default function MainHeader() {
                     </li>
                     <li>
                         <Link href="/archive">OLD NEWS</Link>
+                    </li>
+                    <li>
+                        <Link href="/archive" className="avatar">
+                            <Avatar>
+                                <LoginIcon />
+                            </Avatar>
+                        </Link>
                     </li>
                 </ul>
             </nav>
