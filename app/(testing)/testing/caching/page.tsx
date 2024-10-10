@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 
 import MyPaper from "@/app/components/containers/MyPaper";
-import { MessageType, fetchAllMessages } from "@/lib/messages";
+import { MessageType, fetchAllMessages } from "@/src/lib/messages";
 
 export async function generateMetadata(data) {
     return {

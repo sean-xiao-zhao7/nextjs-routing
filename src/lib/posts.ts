@@ -1,7 +1,7 @@
 import { cache } from "react";
 import sql from "better-sqlite3";
 
-const db = new sql("data/posts.db");
+const db = new sql("src/data/posts.db");
 
 export function initPostsDb() {
     db.exec(`

@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { File } from "buffer";
 import { Stack } from "@mui/material";
 
-import { storePost } from "@/lib/posts";
+import { storePost } from "@/src/lib/posts";
 import PostForm from "@/app/components/form/PostForm";
 import PostsList from "@/app/components/posts/PostsList";
 

@@ -1,4 +1,4 @@
-import { getLatestNews } from "@/lib/news";
+import { getLatestNews } from "@/src/lib/news";
 import NewsList from "@/app/components/news/NewsList";
 
 export default async function LatestPage() {

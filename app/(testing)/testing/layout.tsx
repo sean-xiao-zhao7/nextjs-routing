@@ -1,4 +1,4 @@
-import { fetchAllMessages } from "@/lib/messages";
+import { fetchAllMessages } from "@/src/lib/messages";
 import TestingHeader from "@/app/components/headers/TestingHeader";
 
 export default async function TestingLayout(props: React.PropsWithChildren) {

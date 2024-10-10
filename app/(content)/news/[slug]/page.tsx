@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getNewsItem } from "@/lib/news";
+import { getNewsItem } from "@/src/lib/news";
 
 export default async function NewsDetailsPage({ params }: { params: any }) {
     const slug = params.slug;

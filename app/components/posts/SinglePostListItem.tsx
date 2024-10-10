@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
 
 import { PostType } from "@/src/types/post-type";
-import { deleteSinglePost } from "@/lib/posts";
+import { deleteSinglePost } from "@/src/lib/posts";
 import SinglePostListItemStack from "./SinglePostListItemStack";
 
 export default function SinglePostListItem({ post }: { post: PostType }) {

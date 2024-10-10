@@ -1,4 +1,4 @@
-import { initPostsDb } from "@/lib/posts";
+import { initPostsDb } from "@/src/lib/posts";
 import { CoffeeMaker } from "@mui/icons-material";
 import { Button } from "@mui/material";
 
