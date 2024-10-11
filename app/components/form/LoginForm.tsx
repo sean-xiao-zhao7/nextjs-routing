@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { useFormState } from "react-dom";
 
-import { Paper, TextField, Stack } from "@mui/material";
+import { Paper, TextField, Stack, Alert } from "@mui/material";
 
 import FormSubmit from "@/app/components/form/FormSubmit";
 
@@ -48,12 +48,15 @@ export default function LoginForm({ mutationAction }) {
                             name="password"
                             required
                         />
-                        {formState.errors && (
-                            <ul className="form-errors">
-                                {formState.errors.map((error) => (
-                                    <li key={error}>{error}</li>
-                                ))}
-                            </ul>
+                        {formState.errorMessage && (
+                            <Alert severity="error">
+                                Error: {formState.errorMessage}
+                            </Alert>
+                        )}
+                        {formState.message && (
+                            <Alert severity="success">
+                                Error: {formState.message}
+                            </Alert>
                         )}
                         <Stack spacing={1} direction={"row-reverse"}>
                             <FormSubmit

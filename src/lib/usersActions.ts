@@ -6,7 +6,7 @@ export async function registerAction(prevState, formData) {
     const firstname = formData.get("firstname");
     const lastname = formData.get("lastname");
 
-    let errors = {};
+    let errorMessage = "";
 
     if (
         username.length <= 0 ||
@@ -14,29 +14,35 @@ export async function registerAction(prevState, formData) {
         firstname.length <= 0 ||
         lastname.length <= 0
     ) {
-        errors["empty"] = "Please enter all info.";
+        errorMessage = "Please enter all info.";
     }
 
-    if (Object.keys(errors).length > 0) {
-        return { errors };
+    if (errorMessage !== "") {
+        return { errorMessage };
     }
 
-    return { username, password, firstname, lastname };
+    return {
+        username,
+        password,
+        firstname,
+        lastname,
+        message: "Register success.",
+    };
 }
 
 export async function loginAction(prevState, formData) {
     const username = formData.get("username");
     const password = formData.get("password");
 
-    let errors = {};
+    let errorMessage = "";
 
     if (username.length <= 0 || password.length <= 0) {
-        errors["empty"] = "Please enter all info.";
+        errorMessage = "Please enter all info.";
     }
 
-    if (Object.keys(errors).length > 0) {
-        return { errors };
+    if (errorMessage !== "") {
+        return { errorMessage };
     }
 
-    return { username, password };
+    return { username, password, message: "Login success." };
 }

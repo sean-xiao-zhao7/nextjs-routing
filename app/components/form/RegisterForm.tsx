@@ -8,6 +8,7 @@ import {
     Stack,
     Checkbox,
     FormControlLabel,
+    Alert,
 } from "@mui/material";
 
 import FormSubmit from "@/app/components/form/FormSubmit";
@@ -21,6 +22,8 @@ export default function RegisterForm({ mutationAction }) {
     };
 
     const [formState, formAction] = useFormState(mutationAction, {});
+
+    console.log(formState);
 
     return (
         <>
@@ -82,12 +85,15 @@ export default function RegisterForm({ mutationAction }) {
                             id="terms"
                             name="terms"
                         />
-                        {formState.errors && (
-                            <ul className="form-errors">
-                                {formState.errors.map((error) => (
-                                    <li key={error}>{error}</li>
-                                ))}
-                            </ul>
+                        {formState.errorMessage && (
+                            <Alert severity="error">
+                                Error: {formState.errorMessage}
+                            </Alert>
+                        )}
+                        {formState.message && (
+                            <Alert severity="success">
+                                Success: {formState.message}
+                            </Alert>
                         )}
                         <Stack spacing={1} direction={"row-reverse"}>
                             <FormSubmit
