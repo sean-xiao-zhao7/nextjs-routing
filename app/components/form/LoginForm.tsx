@@ -55,7 +55,7 @@ export default function LoginForm({ mutationAction }) {
                         )}
                         {formState.message && (
                             <Alert severity="success">
-                                Error: {formState.message}
+                                {formState.message}
                             </Alert>
                         )}
                         <Stack spacing={1} direction={"row-reverse"}>

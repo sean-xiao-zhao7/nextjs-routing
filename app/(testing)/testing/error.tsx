@@ -1,5 +1,7 @@
 "use client";
 
+import { Alert } from "@mui/material";
+
 export default function TestingError({
     error,
     reset,
@@ -11,7 +13,7 @@ export default function TestingError({
     return (
         <>
             <h1>Error</h1>
-            {error.message}
+            <Alert severity="error">{error.message}</Alert>
         </>
     );
 }

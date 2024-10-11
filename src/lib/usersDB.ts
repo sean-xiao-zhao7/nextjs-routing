@@ -12,7 +12,7 @@ export function initUsersDb() {
       id INTEGER PRIMARY KEY, 
       first_name TEXT, 
       last_name TEXT,
-      username TEXT,
+      username TEXT NOT NULL,
       password TEXT
     )`);
     db.exec(`

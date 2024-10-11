@@ -5,13 +5,6 @@ const db = new sql("src/data/posts.db");
 
 export function initPostsDb() {
     db.exec(`
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY, 
-      first_name TEXT, 
-      last_name TEXT,
-      email TEXT
-    )`);
-    db.exec(`
     CREATE TABLE IF NOT EXISTS posts (
       id INTEGER PRIMARY KEY, 
       image_url TEXT NOT NULL,
@@ -35,18 +28,16 @@ export function initPostsDb() {
 
     if (stmt.get().count === 0) {
         db.exec(`
-    INSERT INTO users (first_name, last_name, email)
+    INSERT INTO users (first_name, last_name, username)
     VALUES ('John', 'Doe', 'john@example.com')
   `);
 
         db.exec(`
-    INSERT INTO users (first_name, last_name, email)
+    INSERT INTO users (first_name, last_name, username)
     VALUES ('Max', 'Schwarz', 'max@example.com')
   `);
     }
 }
-
-initPostsDb();
 
 export const getPosts = cache(async function getPosts(maxNumber) {
     let limitClause = "";
