@@ -20,12 +20,7 @@ export default function RegisterForm({ mutationAction }) {
         }
     };
 
-    const [formState, formAction] = useFormState(mutationAction, {
-        username: "",
-        password: "",
-        firstname: "",
-        lastname: "",
-    });
+    const [formState, formAction] = useFormState(mutationAction, {});
 
     return (
         <>
