@@ -60,11 +60,10 @@ export function registerUser(username, password) {
 }
 
 export function loginUser(username, password) {
-    const storedPassword = db
+    const result = db
         .prepare("SELECT password FROM users WHERE username = ?")
-        .run(username);
-    console.log(storedPassword);
-    const verified = verifyPassword(storedPassword, password);
+        .get(username);
+    const verified = verifyPassword(result.password, password);
     if (verified) {
         return "Authed";
     } else {
