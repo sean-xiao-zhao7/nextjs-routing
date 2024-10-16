@@ -1,4 +1,4 @@
-import { getNewsItem } from "@/src/lib/news";
+import { getNewsItem } from "@/src/lib/newsDB";
 import { notFound } from "next/navigation";
 
 export default async function ImagePage({ params }) {

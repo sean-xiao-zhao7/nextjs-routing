@@ -23,7 +23,11 @@ export async function registerAction(prevState, formData) {
         return { errorMessage };
     }
 
-    const result = registerUser(username, password);
+    try {
+        registerUser(username, password);
+    } catch (e) {
+        return { errorMessage: e.message };
+    }
 
     return {
         username,
@@ -45,7 +49,10 @@ export async function loginAction(prevState, formData) {
         return { errorMessage };
     }
 
-    const resultMessage = loginUser(username, password);
-
-    return { username, message: resultMessage };
+    try {
+        const resultMessage = loginUser(username, password);
+        return { username, message: resultMessage };
+    } catch (e) {
+        return { errorMessage: e.message };
+    }
 }

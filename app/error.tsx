@@ -1,5 +1,7 @@
 "use client";
 
+import MainHeader from "./components/headers/MainHeader";
+
 export default function RootError({
     error,
     reset,
@@ -10,6 +12,7 @@ export default function RootError({
     console.log(error);
     return (
         <>
+            <MainHeader />
             <h1>Error</h1>
             {error.message}
         </>
