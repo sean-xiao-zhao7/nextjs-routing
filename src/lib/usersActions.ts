@@ -26,7 +26,7 @@ export async function registerAction(prevState, formData) {
         password,
         firstname,
         lastname,
-        message: "Register success.",
+        message: "Registered.",
     };
 }
 
@@ -44,5 +44,5 @@ export async function loginAction(prevState, formData) {
         return { errorMessage };
     }
 
-    return { username, password, message: "Login success." };
+    return { username, password, message: "Logged in." };
 }

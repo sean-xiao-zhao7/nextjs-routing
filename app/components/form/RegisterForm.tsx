@@ -53,6 +53,7 @@ export default function RegisterForm({ mutationAction }) {
                             }}
                             name="password"
                             required
+                            type="password"
                         />
                         <TextField
                             id="firstname"
