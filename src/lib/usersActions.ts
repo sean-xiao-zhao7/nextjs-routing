@@ -24,6 +24,7 @@ export async function registerAction(prevState, formData) {
     }
 
     const result = registerUser(username, password);
+    console.log(result);
 
     return {
         username,
@@ -46,6 +47,7 @@ export async function loginAction(prevState, formData) {
     }
 
     const resultMessage = loginUser(username, password);
+    console.log(resultMessage);
 
     return { username, message: resultMessage };
 }

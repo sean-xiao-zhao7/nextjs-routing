@@ -63,6 +63,7 @@ export function loginUser(username, password) {
     const storedPassword = db
         .prepare("SELECT password FROM users WHERE username = ?")
         .run(username);
+    console.log(storedPassword);
     const verified = verifyPassword(storedPassword, password);
     if (verified) {
         return "Authed";

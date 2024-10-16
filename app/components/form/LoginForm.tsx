@@ -47,6 +47,7 @@ export default function LoginForm({ mutationAction }) {
                             }}
                             name="password"
                             required
+                            type="password"
                         />
                         {formState.errorMessage && (
                             <Alert severity="error">
