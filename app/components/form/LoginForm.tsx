@@ -1,8 +1,14 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useFormState } from "react-dom";
-
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Stack, Alert } from "@mui/material";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 
 import FormSubmit from "@/app/components/form/FormSubmit";
 import MyPaper from "../containers/MyPaper";
@@ -10,6 +16,8 @@ import MyTextInput from "./MyTextInput";
 
 export default function LoginForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
+    const [showPassword, setShowPassword] = useState(false);
+
     const resetFormHandler = () => {
         if (formRef && formRef.current) {
             formRef.current.reset();
@@ -20,6 +28,20 @@ export default function LoginForm({ mutationAction }) {
         username: "",
         password: "",
     });
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (
+        event: React.MouseEvent<HTMLButtonElement>
+    ) => {
+        event.preventDefault();
+    };
+
+    const handleMouseUpPassword = (
+        event: React.MouseEvent<HTMLButtonElement>
+    ) => {
+        event.preventDefault();
+    };
 
     return (
         <>
@@ -38,19 +60,36 @@ export default function LoginForm({ mutationAction }) {
                             name="username"
                             required
                         />
-                        <MyTextInput
-                            id="password"
-                            label="Password"
-                            variant="outlined"
-                            slotProps={{
-                                inputLabel: {
-                                    shrink: true,
-                                },
-                            }}
-                            name="password"
-                            required
-                            type="password"
-                        />
+                        <FormControl variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">
+                                Password
+                            </InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                required
+                                type={showPassword ? "text" : "password"}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={
+                                                handleMouseDownPassword
+                                            }
+                                            onMouseUp={handleMouseUpPassword}
+                                            edge="end"
+                                        >
+                                            {showPassword ? (
+                                                <VisibilityOff />
+                                            ) : (
+                                                <Visibility />
+                                            )}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                label="Password"
+                            />
+                        </FormControl>
                         {formState.errorMessage && (
                             <Alert severity="error">
                                 Error: {formState.errorMessage}
