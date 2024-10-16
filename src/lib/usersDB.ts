@@ -50,3 +50,23 @@ export function verifyPassword(storedPassword, suppliedPassword) {
     const suppliedPasswordBuf = crypto.scryptSync(suppliedPassword, salt, 64);
     return crypto.timingSafeEqual(hashedPasswordBuf, suppliedPasswordBuf);
 }
+
+export function registerUser(username, password) {
+    const hashedPassword = hashUserPassword(password);
+    const result = db
+        .prepare("INSERT INTO users (username, password) VALUES (?, ?)")
+        .run(username, hashedPassword);
+    return result.lastInsertRowid;
+}
+
+export function loginUser(username, password) {
+    const storedPassword = db
+        .prepare("SELECT password FROM users WHERE username = ?")
+        .run(username);
+    const verified = verifyPassword(storedPassword, password);
+    if (verified) {
+        return "Authed";
+    } else {
+        return "No auth";
+    }
+}

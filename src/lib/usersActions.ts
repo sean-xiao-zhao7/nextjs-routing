@@ -1,5 +1,7 @@
 "use server";
 
+import { loginUser, registerUser } from "./usersDB";
+
 export async function registerAction(prevState, formData) {
     const username = formData.get("username");
     const password = formData.get("password");
@@ -21,11 +23,10 @@ export async function registerAction(prevState, formData) {
         return { errorMessage };
     }
 
+    const result = registerUser(username, password);
+
     return {
         username,
-        password,
-        firstname,
-        lastname,
         message: "Registered.",
     };
 }
@@ -44,5 +45,7 @@ export async function loginAction(prevState, formData) {
         return { errorMessage };
     }
 
-    return { username, password, message: "Logged in." };
+    const resultMessage = loginUser(username, password);
+
+    return { username, message: resultMessage };
 }
