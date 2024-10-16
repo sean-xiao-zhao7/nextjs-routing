@@ -1,5 +1,6 @@
 import { cache } from "react";
 import sql from "better-sqlite3";
+import crypto from "node:crypto";
 
 const db = new sql("src/data/posts.db");
 
@@ -35,3 +36,17 @@ export const getSingleUserByUsernameDB = cache(async function getSingleUser(
 
     return stmt.get(username);
 });
+
+export function hashUserPassword(password) {
+    const salt = crypto.randomBytes(16).toString("hex");
+
+    const hashedPassword = crypto.scryptSync(password, salt, 64);
+    return hashedPassword.toString("hex") + ":" + salt;
+}
+
+export function verifyPassword(storedPassword, suppliedPassword) {
+    const [hashedPassword, salt] = storedPassword.split(":");
+    const hashedPasswordBuf = Buffer.from(hashedPassword, "hex");
+    const suppliedPasswordBuf = crypto.scryptSync(suppliedPassword, salt, 64);
+    return crypto.timingSafeEqual(hashedPasswordBuf, suppliedPasswordBuf);
+}
