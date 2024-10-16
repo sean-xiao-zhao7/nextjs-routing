@@ -1,12 +1,13 @@
 "use client";
 import { useFormState } from "react-dom";
 
-import { Box, Paper, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 import UploadButton from "@/app/components/buttons/UploadButton";
 import FormSubmit from "@/app/components/form/FormSubmit";
 import { useRef } from "react";
+import MyPaper from "../containers/MyPaper";
 
 export default function PostForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
@@ -27,7 +28,7 @@ export default function PostForm({ mutationAction }) {
         <>
             <h1>Mutation testing page</h1>
             <form action={formAction} ref={formRef}>
-                <Paper sx={{ padding: 2 }}>
+                <MyPaper>
                     <Stack spacing={2}>
                         <h2>Add a new post</h2>
 
@@ -81,7 +82,7 @@ export default function PostForm({ mutationAction }) {
                             />
                         </Stack>
                     </Stack>
-                </Paper>
+                </MyPaper>
             </form>
         </>
     );

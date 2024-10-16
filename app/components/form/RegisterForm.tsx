@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { useFormState } from "react-dom";
 
 import {
-    Paper,
     TextField,
     Stack,
     Checkbox,
@@ -12,6 +11,7 @@ import {
 } from "@mui/material";
 
 import FormSubmit from "@/app/components/form/FormSubmit";
+import MyPaper from "../containers/MyPaper";
 
 export default function RegisterForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
@@ -28,7 +28,7 @@ export default function RegisterForm({ mutationAction }) {
     return (
         <>
             <form action={formAction} ref={formRef}>
-                <Paper sx={{ padding: 2 }}>
+                <MyPaper>
                     <Stack spacing={2}>
                         <TextField
                             id="username"
@@ -103,7 +103,7 @@ export default function RegisterForm({ mutationAction }) {
                             />
                         </Stack>
                     </Stack>
-                </Paper>
+                </MyPaper>
             </form>
         </>
     );

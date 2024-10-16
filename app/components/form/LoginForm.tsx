@@ -2,9 +2,11 @@
 import { useRef } from "react";
 import { useFormState } from "react-dom";
 
-import { Paper, TextField, Stack, Alert } from "@mui/material";
+import { Stack, Alert } from "@mui/material";
 
 import FormSubmit from "@/app/components/form/FormSubmit";
+import MyPaper from "../containers/MyPaper";
+import MyTextInput from "./MyTextInput";
 
 export default function LoginForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
@@ -22,9 +24,9 @@ export default function LoginForm({ mutationAction }) {
     return (
         <>
             <form action={formAction} ref={formRef}>
-                <Paper sx={{ padding: 2 }}>
+                <MyPaper>
                     <Stack spacing={2}>
-                        <TextField
+                        <MyTextInput
                             id="username"
                             label="Username"
                             variant="outlined"
@@ -36,7 +38,7 @@ export default function LoginForm({ mutationAction }) {
                             name="username"
                             required
                         />
-                        <TextField
+                        <MyTextInput
                             id="password"
                             label="Password"
                             variant="outlined"
@@ -66,7 +68,7 @@ export default function LoginForm({ mutationAction }) {
                             />
                         </Stack>
                     </Stack>
-                </Paper>
+                </MyPaper>
             </form>
         </>
     );

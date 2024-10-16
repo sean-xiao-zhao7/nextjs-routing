@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 
-import { Paper, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+
+import MyPaper from "../containers/MyPaper";
 
 export default function SinglePostListItemStack({ post, deletePostHandler }) {
     const [deleting, setDeleting] = useState(false);
@@ -18,7 +20,7 @@ export default function SinglePostListItemStack({ post, deletePostHandler }) {
     };
 
     return (
-        <Paper sx={{ padding: 2 }}>
+        <MyPaper>
             {deleting && <LinearProgress color="error" />}
             <Stack
                 direction="row"
@@ -37,6 +39,6 @@ export default function SinglePostListItemStack({ post, deletePostHandler }) {
                     <DeleteIcon />
                 </IconButton>
             </Stack>
-        </Paper>
+        </MyPaper>
     );
 }
