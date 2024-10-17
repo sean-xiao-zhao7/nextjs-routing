@@ -1,7 +1,7 @@
 "use client";
 
 // react
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useFormState } from "react-dom";
 
 // mui
@@ -45,15 +45,13 @@ export default function LoginForm({ mutationAction }) {
     const [formState, formAction] = useFormState(mutationAction, {});
 
     // reset form
-    const formRef: React.RefObject<HTMLFormElement> = useRef();
     const resetFormHandler = () => {
-        if (formRef && formRef.current) {
-            formRef.current.reset();
-        }
+        setUsername("");
+        setPassword("");
     };
 
     return (
-        <form action={formAction} ref={formRef}>
+        <form action={formAction}>
             <MyPaper sx={{ padding: 2 }}>
                 <Stack spacing={2}>
                     <MyTextField

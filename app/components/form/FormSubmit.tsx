@@ -11,10 +11,6 @@ import LoadingButton from "@mui/lab/LoadingButton";
 export default function FormSubmit({ resetFormHandler, submitLabel }) {
     const status = useFormStatus();
 
-    if (!status.pending) {
-        resetFormHandler();
-    }
-
     return (
         <>
             <LoadingButton

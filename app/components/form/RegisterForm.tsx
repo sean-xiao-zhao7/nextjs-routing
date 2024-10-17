@@ -47,11 +47,12 @@ export default function RegisterForm({ mutationAction }) {
     };
 
     // reset form
-    const formRef: React.RefObject<HTMLFormElement> = useRef();
     const resetFormHandler = () => {
-        if (formRef && formRef.current) {
-            formRef.current.reset();
-        }
+        setUsername("");
+        setPassword("");
+        setFirstname("");
+        setLastname("");
+        setTerms(false);
     };
 
     // useFormstate
@@ -59,7 +60,7 @@ export default function RegisterForm({ mutationAction }) {
 
     return (
         <>
-            <form action={formAction} ref={formRef}>
+            <form action={formAction}>
                 <MyPaper>
                     <Stack spacing={2}>
                         <MyTextField
