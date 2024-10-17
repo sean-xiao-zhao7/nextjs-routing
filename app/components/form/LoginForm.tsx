@@ -54,7 +54,7 @@ export default function LoginForm({ mutationAction }) {
 
     return (
         <form action={formAction} ref={formRef}>
-            <MyPaper>
+            <MyPaper sx={{ padding: 2 }}>
                 <Stack spacing={2}>
                     <MyTextField
                         id="username"
