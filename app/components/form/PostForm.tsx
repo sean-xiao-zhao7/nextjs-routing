@@ -1,12 +1,16 @@
 "use client";
-import { useFormState } from "react-dom";
 
+// react
+import { useFormState } from "react-dom";
+import { useRef } from "react";
+
+// mui
 import { Box, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
+// custom
 import UploadButton from "@/app/components/buttons/UploadButton";
 import FormSubmit from "@/app/components/form/FormSubmit";
-import { useRef } from "react";
 import MyPaper from "../containers/MyPaper";
 
 export default function PostForm({ mutationAction }) {
