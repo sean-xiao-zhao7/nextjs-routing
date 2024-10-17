@@ -12,7 +12,8 @@ import {
 
 import FormSubmit from "@/app/components/form/FormSubmit";
 import MyPaper from "../containers/MyPaper";
-./MyTextField
+import MyTextField from "./MyTextField";
+
 export default function RegisterForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
     const resetFormHandler = () => {
@@ -22,8 +23,6 @@ export default function RegisterForm({ mutationAction }) {
     };
 
     const [formState, formAction] = useFormState(mutationAction, {});
-
-    console.log(formState);
 
     return (
         <>
@@ -42,7 +41,7 @@ export default function RegisterForm({ mutationAction }) {
                             name="username"
                             required
                         />
-                        <TextField
+                        <MyTextField
                             id="password"
                             label="Password"
                             variant="outlined"
@@ -55,7 +54,7 @@ export default function RegisterForm({ mutationAction }) {
                             required
                             type="password"
                         />
-                        <TextField
+                        <MyTextField
                             id="firstname"
                             label="Firstname"
                             variant="outlined"
@@ -67,7 +66,7 @@ export default function RegisterForm({ mutationAction }) {
                             name="firstname"
                             required
                         />
-                        <TextField
+                        <MyTextField
                             id="lastname"
                             label="Lastname"
                             variant="outlined"
