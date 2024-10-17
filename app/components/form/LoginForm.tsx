@@ -21,21 +21,15 @@ import MyPaper from "../containers/MyPaper";
 import MyTextField from "./MyTextField";
 
 export default function LoginForm({ mutationAction }) {
-    const formRef: React.RefObject<HTMLFormElement> = useRef();
+    // control username/password because hide password logic requires it
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
-    const resetFormHandler = () => {
-        if (formRef && formRef.current) {
-            formRef.current.reset();
-        }
+    // password hide
+    const handleClickShowPassword = () => {
+        setShowPassword((show) => !show);
     };
-
-    const [formState, formAction] = useFormState(mutationAction, {
-        username: "",
-        password: "",
-    });
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (
         event: React.MouseEvent<HTMLButtonElement>
     ) => {
@@ -47,77 +41,85 @@ export default function LoginForm({ mutationAction }) {
         event.preventDefault();
     };
 
+    // useFormState
+    const [formState, formAction] = useFormState(mutationAction, {});
+
+    // reset form
+    const formRef: React.RefObject<HTMLFormElement> = useRef();
+    const resetFormHandler = () => {
+        if (formRef && formRef.current) {
+            formRef.current.reset();
+        }
+    };
+
     return (
-        <>
-            <form action={formAction} ref={formRef}>
-                <MyPaper>
-                    <Stack spacing={2}>
-                        <MyTextField
-                            id="username"
-                            label="Username"
-                            variant="outlined"
-                            slotProps={{
-                                inputLabel: {
-                                    shrink: true,
-                                },
-                            }}
-                            name="username"
+        <form action={formAction} ref={formRef}>
+            <MyPaper>
+                <Stack spacing={2}>
+                    <MyTextField
+                        id="username"
+                        label="Username"
+                        name="username"
+                        required
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        variant="outlined"
+                        slotProps={{
+                            inputLabel: {
+                                shrink: true,
+                            },
+                        }}
+                    />
+                    {/* endAdornment requires OutlinedInput instead of TextField */}
+                    <FormControl variant="outlined">
+                        <InputLabel htmlFor="password" shrink>
+                            Password *
+                        </InputLabel>
+                        <OutlinedInput
+                            id="password"
+                            name="password"
+                            label="Password"
                             required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        onMouseUp={handleMouseUpPassword}
+                                        edge="end"
+                                    >
+                                        {showPassword ? (
+                                            <VisibilityOff />
+                                        ) : (
+                                            <Visibility />
+                                        )}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                            notched
+                            type={showPassword ? "text" : "password"}
+                            sx={{ borderRadius: 0 }}
                         />
-                        <FormControl variant="outlined">
-                            <InputLabel
-                                htmlFor="outlined-adornment-password"
-                                shrink
-                            >
-                                Password *
-                            </InputLabel>
-                            <OutlinedInput
-                                sx={{ borderRadius: 0 }}
-                                id="outlined-adornment-password"
-                                type={showPassword ? "text" : "password"}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={
-                                                handleMouseDownPassword
-                                            }
-                                            onMouseUp={handleMouseUpPassword}
-                                            edge="end"
-                                        >
-                                            {showPassword ? (
-                                                <VisibilityOff />
-                                            ) : (
-                                                <Visibility />
-                                            )}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                label="Password"
-                                required
-                                notched
-                            />
-                        </FormControl>
-                        {formState.errorMessage && (
-                            <Alert severity="error">
-                                Error: {formState.errorMessage}
-                            </Alert>
-                        )}
-                        {formState.message && (
-                            <Alert severity="success">
-                                {formState.message}
-                            </Alert>
-                        )}
-                        <Stack spacing={1} direction={"row-reverse"}>
-                            <FormSubmit
-                                resetFormHandler={resetFormHandler}
-                                submitLabel={"Login"}
-                            />
-                        </Stack>
+                    </FormControl>
+                    {formState.errorMessage && (
+                        <Alert severity="error">
+                            Error: {formState.errorMessage}
+                        </Alert>
+                    )}
+                    {formState.message && (
+                        <Alert severity="success">{formState.message}</Alert>
+                    )}
+                    <Stack spacing={1} direction={"row-reverse"}>
+                        <FormSubmit
+                            resetFormHandler={resetFormHandler}
+                            submitLabel={"Login"}
+                        />
                     </Stack>
-                </MyPaper>
-            </form>
-        </>
+                </Stack>
+            </MyPaper>
+        </form>
     );
 }
