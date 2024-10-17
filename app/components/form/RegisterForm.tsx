@@ -1,7 +1,7 @@
 "use client";
 
 // react
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useFormState } from "react-dom";
 
 // mui
@@ -142,16 +142,14 @@ export default function RegisterForm({ mutationAction }) {
                             }}
                         />
                         <FormControlLabel
-                            required
-                            control={
-                                <Checkbox
-                                    id="terms"
-                                    name="terms"
-                                    value={terms}
-                                    onChange={() => setTerms((term) => !term)}
-                                />
-                            }
+                            control={<Checkbox />}
+                            id="terms"
+                            name="terms"
                             label="Accept terms of service to register."
+                            value={terms}
+                            checked={terms}
+                            onChange={() => setTerms((term) => !term)}
+                            required
                         />
                         {formState.errorMessage && (
                             <Alert severity="error">
