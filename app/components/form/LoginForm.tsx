@@ -1,18 +1,24 @@
 "use client";
+
+// react
 import { useRef, useState } from "react";
 import { useFormState } from "react-dom";
+
+// MUI material
+import Stack from "@mui/material";
+import Alert from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Stack, Alert } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 
+// custom components
 import FormSubmit from "@/app/components/form/FormSubmit";
 import MyPaper from "../containers/MyPaper";
-import MyTextInput from "./MyTextInput";
+import MyTextField from "./MyTextField";
 
 export default function LoginForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
@@ -48,7 +54,7 @@ export default function LoginForm({ mutationAction }) {
             <form action={formAction} ref={formRef}>
                 <MyPaper>
                     <Stack spacing={2}>
-                        <MyTextInput
+                        <MyTextField
                             id="username"
                             label="Username"
                             variant="outlined"
@@ -60,7 +66,20 @@ export default function LoginForm({ mutationAction }) {
                             name="username"
                             required
                         />
-                        <FormControl variant="outlined">
+                        <MyTextField
+                            id="password"
+                            label="Password"
+                            variant="outlined"
+                            slotProps={{
+                                inputLabel: {
+                                    shrink: true,
+                                },
+                            }}
+                            name="password"
+                            type="password"
+                            required
+                        />
+                        {/* <FormControl variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">
                                 Password
                             </InputLabel>
@@ -87,9 +106,9 @@ export default function LoginForm({ mutationAction }) {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                label="Password"
+                                label="Password"                            
                             />
-                        </FormControl>
+                        </FormControl> */}
                         {formState.errorMessage && (
                             <Alert severity="error">
                                 Error: {formState.errorMessage}

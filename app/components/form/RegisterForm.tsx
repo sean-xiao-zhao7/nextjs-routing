@@ -12,7 +12,7 @@ import {
 
 import FormSubmit from "@/app/components/form/FormSubmit";
 import MyPaper from "../containers/MyPaper";
-
+./MyTextField
 export default function RegisterForm({ mutationAction }) {
     const formRef: React.RefObject<HTMLFormElement> = useRef();
     const resetFormHandler = () => {
@@ -30,7 +30,7 @@ export default function RegisterForm({ mutationAction }) {
             <form action={formAction} ref={formRef}>
                 <MyPaper>
                     <Stack spacing={2}>
-                        <TextField
+                        <MyTextField
                             id="username"
                             label="Username"
                             variant="outlined"
