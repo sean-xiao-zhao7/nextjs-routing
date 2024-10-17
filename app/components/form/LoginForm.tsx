@@ -64,24 +64,15 @@ export default function LoginForm({ mutationAction }) {
                             name="username"
                             required
                         />
-                        <MyTextField
-                            id="password"
-                            label="Password"
-                            variant="outlined"
-                            slotProps={{
-                                inputLabel: {
-                                    shrink: true,
-                                },
-                            }}
-                            name="password"
-                            type="password"
-                            required
-                        />
                         <FormControl variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">
-                                Password
+                            <InputLabel
+                                htmlFor="outlined-adornment-password"
+                                shrink
+                            >
+                                Password *
                             </InputLabel>
                             <OutlinedInput
+                                sx={{ borderRadius: 0 }}
                                 id="outlined-adornment-password"
                                 type={showPassword ? "text" : "password"}
                                 endAdornment={
@@ -104,6 +95,8 @@ export default function LoginForm({ mutationAction }) {
                                     </InputAdornment>
                                 }
                                 label="Password"
+                                required
+                                notched
                             />
                         </FormControl>
                         {formState.errorMessage && (
