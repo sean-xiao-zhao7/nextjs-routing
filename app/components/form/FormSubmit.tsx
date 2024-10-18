@@ -19,6 +19,7 @@ export default function FormSubmit({ resetFormHandler, submitLabel }) {
                 type="submit"
                 loading={status.pending}
                 loadingPosition="start"
+                sx={{ borderRadius: 0 }}
             >
                 {submitLabel ? submitLabel : "Submit"}
             </LoadingButton>
