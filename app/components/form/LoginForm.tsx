@@ -52,7 +52,14 @@ export default function LoginForm({ mutationAction }) {
 
     return (
         <form action={formAction}>
-            <MyPaper sx={{ padding: 2 }}>
+            <MyPaper
+                sx={{
+                    padding: 6,
+                    paddingBottom: 5,
+                    marginRight: "20%",
+                    marginLeft: "20%",
+                }}
+            >
                 <Stack spacing={2}>
                     <MyTextField
                         id="username"
