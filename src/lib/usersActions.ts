@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { loginUser, registerUser } from "./usersDB";
 
 export async function registerAction(prevState, formData) {
@@ -50,8 +51,8 @@ export async function loginAction(prevState, formData) {
     }
 
     try {
-        const resultMessage = loginUser(username, password);
-        return { username, message: resultMessage };
+        loginUser(username, password);
+        redirect("/testing");
     } catch (e) {
         return { errorMessage: e.message };
     }

@@ -64,14 +64,15 @@ export function loginUser(username, password) {
         .prepare("SELECT password FROM users WHERE username = ?")
         .get(username);
 
+    let message = "Either username or password is wrong. Please try again.";
     if (!result) {
-        throw new Error("No such user with username " + username);
+        throw new Error(message);
     }
 
     const verified = verifyPassword(result.password, password);
     if (verified) {
-        return "Authed";
+        return true;
     } else {
-        return "No auth";
+        throw new Error(message);
     }
 }
