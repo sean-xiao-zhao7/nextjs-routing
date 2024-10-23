@@ -1,5 +1,5 @@
 import RegisterForm from "@/app/components/form/RegisterForm";
-import { registerAction } from "@/lib/usersActions";
+import { registerAction } from "@/lib/usersServerActions";
 
 export default function RegisterPage() {
     return (

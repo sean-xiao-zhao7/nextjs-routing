@@ -1,17 +1,12 @@
-import { initUsersDb } from "@/lib/usersDB";
-import { initPostsDb } from "@/lib/postsDB";
-import { CoffeeMaker } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { resetUserDatabase } from "@/lib/usersServerActions";
+import { resetPostsDatabase } from "@/lib/postsServerActions";
+import ManageDatabaseClient from "./manageDatabaseClient";
 
 export default function DatabasePage() {
-    //initPostsDb();
-    initUsersDb();
-
     return (
-        <>
-            <Button variant="contained" startIcon={<CoffeeMaker />} disabled>
-                Manage Database
-            </Button>
-        </>
+        <ManageDatabaseClient
+            resetPostsDatabase={resetPostsDatabase}
+            resetUserDatabase={resetUserDatabase}
+        />
     );
 }

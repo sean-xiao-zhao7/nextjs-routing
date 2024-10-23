@@ -1,7 +1,11 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { loginUser, registerUser } from "./usersDB";
+import { initUsersDb, loginUser, registerUser } from "./usersDB";
+
+export async function resetUserDatabase() {
+    initUsersDb();
+}
 
 export async function registerAction(prevState, formData) {
     const username = formData.get("username");
@@ -25,15 +29,11 @@ export async function registerAction(prevState, formData) {
     }
 
     try {
-        registerUser(username, password);
+        registerUser(username, password, firstname, lastname);
+        redirect("/testing");
     } catch (e) {
         return { errorMessage: e.message };
     }
-
-    return {
-        username,
-        message: "Registered.",
-    };
 }
 
 export async function loginAction(prevState, formData) {

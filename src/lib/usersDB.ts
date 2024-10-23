@@ -11,8 +11,8 @@ export function initUsersDb() {
     db.exec(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY, 
-      first_name TEXT, 
-      last_name TEXT,
+      firstname TEXT, 
+      lastname TEXT,
       username TEXT NOT NULL,
       password TEXT
     )`);
@@ -51,11 +51,13 @@ export function verifyPassword(storedPassword, suppliedPassword) {
     return crypto.timingSafeEqual(hashedPasswordBuf, suppliedPasswordBuf);
 }
 
-export function registerUser(username, password) {
+export function registerUser(username, password, firstname, lastname) {
     const hashedPassword = hashUserPassword(password);
     const result = db
-        .prepare("INSERT INTO users (username, password) VALUES (?, ?)")
-        .run(username, hashedPassword);
+        .prepare(
+            "INSERT INTO users (username, password, firstname, lastname) VALUES (?, ?, ?, ?)"
+        )
+        .run(username, hashedPassword, firstname, lastname);
     return result.lastInsertRowid;
 }
 
