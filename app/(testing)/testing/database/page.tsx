@@ -1,6 +1,6 @@
+import ManageDatabaseClient from "./ManageDatabaseClient";
 import { resetUserDatabase } from "@/lib/usersServerActions";
 import { resetPostsDatabase } from "@/lib/postsServerActions";
-import ManageDatabaseClient from "./manageDatabaseClient";
 
 export default function DatabasePage() {
     return (

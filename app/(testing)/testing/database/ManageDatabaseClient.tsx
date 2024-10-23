@@ -12,14 +12,14 @@ export default function ManageDatabaseClient({
             <Button
                 variant="contained"
                 startIcon={<CoffeeMaker />}
-                onClick={resetUserDatabase}
+                onClick={() => resetUserDatabase()}
             >
                 Rest User Database
             </Button>
             <Button
                 variant="contained"
                 startIcon={<CoffeeMaker />}
-                onClick={resetPostsDatabase}
+                onClick={() => resetPostsDatabase()}
             >
                 Rest Posts Database
             </Button>
