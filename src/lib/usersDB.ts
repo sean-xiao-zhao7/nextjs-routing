@@ -63,6 +63,11 @@ export function loginUser(username, password) {
     const result = db
         .prepare("SELECT password FROM users WHERE username = ?")
         .get(username);
+
+    if (!result) {
+        throw new Error("No such user with username " + username);
+    }
+
     const verified = verifyPassword(result.password, password);
     if (verified) {
         return "Authed";
