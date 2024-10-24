@@ -30,10 +30,10 @@ export async function registerAction(prevState, formData) {
 
     try {
         registerUser(username, password, firstname, lastname);
-        redirect("/testing");
     } catch (e) {
         return { errorMessage: e.message };
     }
+    redirect("/testing");
 }
 
 export async function loginAction(prevState, formData) {
@@ -52,8 +52,8 @@ export async function loginAction(prevState, formData) {
 
     try {
         loginUser(username, password);
-        redirect("/testing");
     } catch (e) {
         return { errorMessage: e.message };
     }
+    redirect("/testing");
 }
