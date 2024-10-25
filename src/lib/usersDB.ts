@@ -1,6 +1,7 @@
 import { cache } from "react";
 import sql from "better-sqlite3";
 import crypto from "node:crypto";
+import { generateSessionToken, createSession } from "./auth";
 
 const db = new sql("src/data/posts.db");
 
@@ -58,12 +59,14 @@ export function registerUser(username, password, firstname, lastname) {
             "INSERT INTO users (username, password, firstname, lastname) VALUES (?, ?, ?, ?)"
         )
         .run(username, hashedPassword, firstname, lastname);
-    return result.lastInsertRowid;
+    const token = generateSessionToken();
+    createSession(token, result.id);
+    return token;
 }
 
 export function loginUser(username, password) {
     const result = db
-        .prepare("SELECT password FROM users WHERE username = ?")
+        .prepare("SELECT id, password FROM users WHERE username = ?")
         .get(username);
 
     let message = "Either username or password is wrong. Please try again.";
@@ -73,7 +76,9 @@ export function loginUser(username, password) {
 
     const verified = verifyPassword(result.password, password);
     if (verified) {
-        return true;
+        const token = generateSessionToken();
+        createSession(token, result.id);
+        return token;
     } else {
         throw new Error(message);
     }
