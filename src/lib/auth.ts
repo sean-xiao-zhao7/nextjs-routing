@@ -5,8 +5,20 @@ import {
 import sql from "better-sqlite3";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { cookies } from "next/headers";
+import { cache } from "react";
 
 const db = new sql("src/data/posts.db");
+
+export const getCurrentSession = cache(
+    async (): Promise<SessionValidationResult> => {
+        const token = cookies().get("session")?.value ?? null;
+        if (token === null) {
+            return { session: null, user: null };
+        }
+        const result = validateSessionToken(token);
+        return result;
+    }
+);
 
 export function setSessionTokenCookie(token: string, expiresAt: Date): void {
     cookies().set("session", token, {
