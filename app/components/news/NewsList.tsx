@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NewsArticleType } from "../../data/news-articles";
+import { NewsArticleType } from "@/lib/newsDB";
 
 export default function NewsList({
     newsList,

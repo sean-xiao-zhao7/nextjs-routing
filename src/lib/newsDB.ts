@@ -67,3 +67,12 @@ export async function getNewsForYearAndMonth(year, month) {
 
     return news;
 }
+
+export type NewsArticleType = {
+    id: string;
+    slug: string;
+    title: string;
+    image: string;
+    date: string;
+    content: string;
+};
