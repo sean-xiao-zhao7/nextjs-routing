@@ -10,18 +10,18 @@ export function initUsersDb() {
     `);
     db.exec(`
     CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY, 
-      firstname TEXT, 
-      lastname TEXT,
-      username TEXT NOT NULL,
-      password TEXT
+        id INTEGER NOT NULL PRIMARY KEY,
+        firstname TEXT, 
+        lastname TEXT,
+        username TEXT NOT NULL,
+        password TEXT
     )`);
     db.exec(`
     CREATE TABLE IF NOT EXISTS sessions (
-      id INTEGER PRIMARY KEY, 
-      expires_at INTEGER NOT NULL,
-      user_id INTEGER NOT NULL, 
-      FOREIGN KEY (user_id) REFERENCES users(id)
+        id TEXT NOT NULL PRIMARY KEY,
+        expires_at INTEGER NOT NULL,
+        user_id INTEGER NOT NULL, 
+        FOREIGN KEY (user_id) REFERENCES users(id)
     )`);
 }
 
