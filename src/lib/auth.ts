@@ -56,12 +56,10 @@ export function createSession(token: string, userId: number): Session {
         userId,
         expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
     };
-    db.exec(
-        "INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)",
-        session.id,
-        session.userId,
-        Math.floor(session.expiresAt.getTime() / 1000)
-    );
+    const expiresAt = Math.floor(session.expiresAt.getTime() / 1000);
+    db.prepare(
+        "INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)"
+    ).run(session.id, session.userId, expiresAt);
     return session;
 }
 
@@ -69,10 +67,11 @@ export function validateSessionToken(token: string): SessionValidationResult {
     const sessionId = encodeHexLowerCase(
         sha256(new TextEncoder().encode(token))
     );
-    const row = db.get(
-        "SELECT session.id, session.user_id, session.expires_at, user.id FROM sessions INNER JOIN users ON user.id = session.user_id WHERE id = ?",
-        sessionId
-    );
+    const row = db
+        .prepare(
+            "SELECT session.id, session.user_id, session.expires_at, user.id FROM sessions INNER JOIN users ON user.id = session.user_id WHERE id = ?"
+        )
+        .get(sessionId);
     if (row === null) {
         return { session: null, user: null };
     }
@@ -85,13 +84,12 @@ export function validateSessionToken(token: string): SessionValidationResult {
         id: row[3],
     };
     if (Date.now() >= session.expiresAt.getTime()) {
-        db.exec("DELETE FROM sessions WHERE id = ?", session.id);
+        db.prepare("DELETE FROM sessions WHERE id = ?").run(session.id);
         return { session: null, user: null };
     }
     if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 15) {
         session.expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
-        db.exec(
-            "UPDATE sessions SET expires_at = ? WHERE id = ?",
+        db.prepare("UPDATE sessions SET expires_at = ? WHERE id = ?").run(
             Math.floor(session.expiresAt.getTime() / 1000),
             session.id
         );
@@ -100,7 +98,7 @@ export function validateSessionToken(token: string): SessionValidationResult {
 }
 
 export function invalidateSession(sessionId: string): void {
-    db.exec("DELETE FROM session WHERE id = ?", sessionId);
+    db.prepare("DELETE FROM session WHERE id = ?").run(sessionId);
 }
 
 export type SessionValidationResult =
