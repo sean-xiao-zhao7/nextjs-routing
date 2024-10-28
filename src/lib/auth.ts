@@ -57,7 +57,7 @@ export function createSession(token: string, userId: number): Session {
         expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
     };
     db.exec(
-        "INSERT INTO session (id, user_id, expires_at) VALUES (?, ?, ?)",
+        "INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)",
         session.id,
         session.userId,
         Math.floor(session.expiresAt.getTime() / 1000)
@@ -70,7 +70,7 @@ export function validateSessionToken(token: string): SessionValidationResult {
         sha256(new TextEncoder().encode(token))
     );
     const row = db.get(
-        "SELECT session.id, session.user_id, session.expires_at, user.id FROM session INNER JOIN user ON user.id = session.user_id WHERE id = ?",
+        "SELECT session.id, session.user_id, session.expires_at, user.id FROM sessions INNER JOIN users ON user.id = session.user_id WHERE id = ?",
         sessionId
     );
     if (row === null) {
@@ -85,13 +85,13 @@ export function validateSessionToken(token: string): SessionValidationResult {
         id: row[3],
     };
     if (Date.now() >= session.expiresAt.getTime()) {
-        db.exec("DELETE FROM session WHERE id = ?", session.id);
+        db.exec("DELETE FROM sessions WHERE id = ?", session.id);
         return { session: null, user: null };
     }
     if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 15) {
         session.expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
         db.exec(
-            "UPDATE session SET expires_at = ? WHERE id = ?",
+            "UPDATE sessions SET expires_at = ? WHERE id = ?",
             Math.floor(session.expiresAt.getTime() / 1000),
             session.id
         );

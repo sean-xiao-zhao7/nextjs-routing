@@ -7,12 +7,12 @@ const db = new sql("src/data/posts.db");
 
 export function initUsersDb() {
     db.exec(`
-    DROP TABLE users;
+    DROP TABLE IF EXISTS users;
     `);
     db.exec(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER NOT NULL PRIMARY KEY,
-        firstname TEXT, 
+        firstname TEXT UNIQUE, 
         lastname TEXT,
         username TEXT NOT NULL,
         password TEXT
@@ -60,7 +60,7 @@ export function registerUser(username, password, firstname, lastname) {
         )
         .run(username, hashedPassword, firstname, lastname);
     const token = generateSessionToken();
-    createSession(token, result.id);
+    createSession(token, result.lastInsertRowid);
     return token;
 }
 
