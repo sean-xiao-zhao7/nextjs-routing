@@ -8,6 +8,7 @@ const db = new sql("src/data/posts.db");
 export function initUsersDb() {
     db.exec(`
     DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS sessions;
     `);
     db.exec(`
     CREATE TABLE IF NOT EXISTS users (
