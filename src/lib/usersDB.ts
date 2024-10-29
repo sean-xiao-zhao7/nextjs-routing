@@ -65,7 +65,8 @@ export function registerUser(username, password, firstname, lastname) {
         )
         .run(username, hashedPassword, firstname, lastname);
     const token = generateSessionToken();
-    createSession(token, result.lastInsertRowid);
+    const session = createSession(token, result.lastInsertRowid);
+    setSessionTokenCookie(token, session.expiresAt);
     return token;
 }
 
