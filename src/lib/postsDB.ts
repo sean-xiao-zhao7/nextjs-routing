@@ -28,12 +28,12 @@ export function initPostsDb() {
 
     if (stmt.get().count === 0) {
         db.exec(`
-    INSERT INTO users (first_name, last_name, username)
+    INSERT INTO users (firstname, lastname, username)
     VALUES ('John', 'Doe', 'john@example.com')
   `);
 
         db.exec(`
-    INSERT INTO users (first_name, last_name, username)
+    INSERT INTO users (firstname, lastname, username)
     VALUES ('Max', 'Schwarz', 'max@example.com')
   `);
     }
@@ -47,7 +47,7 @@ export const getPosts = cache(async function getPosts(maxNumber) {
     }
 
     const stmt = db.prepare(`
-    SELECT posts.id, image_url AS image, title, content, created_at AS createdAt, first_name AS userFirstName, last_name AS userLastName, COUNT(likes.post_id) AS likes, EXISTS(SELECT * FROM likes WHERE likes.post_id = posts.id and likes.user_id = 2) AS isLiked
+    SELECT posts.id, image_url AS image, title, content, created_at AS createdAt, firstname AS userFirstName, lastname AS userLastName, COUNT(likes.post_id) AS likes, EXISTS(SELECT * FROM likes WHERE likes.post_id = posts.id and likes.user_id = 2) AS isLiked
     FROM posts
     INNER JOIN users ON posts.user_id = users.id
     LEFT JOIN likes ON posts.id = likes.post_id

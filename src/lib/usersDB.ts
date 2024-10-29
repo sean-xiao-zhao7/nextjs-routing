@@ -35,7 +35,7 @@ export const getSingleUserByUsernameDB = cache(async function getSingleUser(
     username: string
 ) {
     const stmt = db.prepare(`
-    SELECT first_name, last_name, username
+    SELECT firstname, lastname, username
     FROM users
     WHERE username = ?
     `);
