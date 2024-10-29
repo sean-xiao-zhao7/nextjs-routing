@@ -1,7 +1,11 @@
 import { cache } from "react";
 import sql from "better-sqlite3";
 import crypto from "node:crypto";
-import { generateSessionToken, createSession } from "./auth";
+import {
+    generateSessionToken,
+    createSession,
+    setSessionTokenCookie,
+} from "./auth";
 
 const db = new sql("src/data/posts.db");
 
@@ -78,7 +82,8 @@ export function loginUser(username, password) {
     const verified = verifyPassword(result.password, password);
     if (verified) {
         const token = generateSessionToken();
-        createSession(token, result.id);
+        const session = createSession(token, result.id);
+        setSessionTokenCookie(token, session.expiresAt);
         return token;
     } else {
         throw new Error(message);
