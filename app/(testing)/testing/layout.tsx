@@ -1,5 +1,6 @@
 import { fetchAllMessages } from "@/src/lib/messages";
-import TestingHeader from "@/app/components/headers/TestingHeader";
+
+import MainHeader from "@/app/components/headers/MainHeader";
 
 export default async function TestingLayout(props: React.PropsWithChildren) {
     let messagesElement = null;
@@ -12,7 +13,7 @@ export default async function TestingLayout(props: React.PropsWithChildren) {
 
     return (
         <>
-            <TestingHeader />
+            <MainHeader testing={true} />
             {messagesElement}
             {props.children}
         </>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import AccountButton from "../buttons/AccountButton";
 import { isAuth } from "@/lib/auth";
 
-export default async function MainHeader() {
+export default async function MainHeader({ testing }: { testing: Boolean }) {
     const isAuthed = await isAuth();
 
     return (
@@ -23,21 +23,44 @@ export default async function MainHeader() {
                     </li>
                 </ul>
             </nav>
-            <nav>
-                <ul>
-                    <li>
-                        <Link href="/news">ALL NEWS</Link>
-                    </li>
-                    <li>
-                        <Link href="/archive">OLD NEWS</Link>
-                    </li>
-                    {!isAuthed && (
+            {testing ? (
+                <nav>
+                    <ul>
+                        <li>
+                            <Link href="/testing/caching">Caching Testing</Link>
+                        </li>
+                        <li>
+                            <Link href="/testing/mutation">
+                                Mutation Testing
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/testing/database">
+                                Database management
+                            </Link>
+                        </li>
                         <li>
                             <AccountButton link="/login" />
                         </li>
-                    )}
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
+            ) : (
+                <nav>
+                    <ul>
+                        <li>
+                            <Link href="/news">ALL NEWS</Link>
+                        </li>
+                        <li>
+                            <Link href="/archive">OLD NEWS</Link>
+                        </li>
+                        {!isAuthed && (
+                            <li>
+                                <AccountButton link="/login" />
+                            </li>
+                        )}
+                    </ul>
+                </nav>
+            )}
         </header>
     );
 }
