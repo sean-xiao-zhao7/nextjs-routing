@@ -8,6 +8,14 @@ import { isAuth } from "@/lib/auth";
 export default async function MainHeader({ testing }: { testing: Boolean }) {
     const isAuthed = await isAuth();
 
+    let authElement;
+    if (!isAuthed)
+        authElement = (
+            <li>
+                <AccountButton link="/login" />
+            </li>
+        );
+
     return (
         <header id="main-header">
             <nav>
@@ -39,9 +47,7 @@ export default async function MainHeader({ testing }: { testing: Boolean }) {
                                 Database management
                             </Link>
                         </li>
-                        <li>
-                            <AccountButton link="/login" />
-                        </li>
+                        {authElement}
                     </ul>
                 </nav>
             ) : (
@@ -53,11 +59,7 @@ export default async function MainHeader({ testing }: { testing: Boolean }) {
                         <li>
                             <Link href="/archive">OLD NEWS</Link>
                         </li>
-                        {!isAuthed && (
-                            <li>
-                                <AccountButton link="/login" />
-                            </li>
-                        )}
+                        {authElement}
                     </ul>
                 </nav>
             )}
