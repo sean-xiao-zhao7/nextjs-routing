@@ -1,7 +1,13 @@
-import Link from "next/link";
-import AccountButton from "../buttons/AccountButton";
+"use server";
 
-export default function MainHeader() {
+import Link from "next/link";
+
+import AccountButton from "../buttons/AccountButton";
+import { isAuth } from "@/lib/auth";
+
+export default async function MainHeader() {
+    const isAuthed = await isAuth();
+
     return (
         <header id="main-header">
             <nav>
@@ -25,9 +31,11 @@ export default function MainHeader() {
                     <li>
                         <Link href="/archive">OLD NEWS</Link>
                     </li>
-                    <li>
-                        <AccountButton link="/login" />
-                    </li>
+                    {!isAuthed && (
+                        <li>
+                            <AccountButton link="/login" />
+                        </li>
+                    )}
                 </ul>
             </nav>
         </header>
