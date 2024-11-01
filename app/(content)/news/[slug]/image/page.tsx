@@ -10,7 +10,7 @@ export default async function ImagePage({ params }) {
 
     return (
         <div className="fullscreen-image">
-            <img src={`/images/news/${article.image}`} alt={article.image} />
+            <img src={article.image} alt="News image" />
         </div>
     );
 }

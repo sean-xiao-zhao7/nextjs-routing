@@ -13,7 +13,7 @@ export default function NewsList({
                     <li key={newsArticle.id}>
                         <Link href={`/news/${newsArticle.slug}`}>
                             <img
-                                src={`/images/news/${newsArticle.image}`}
+                                src={newsArticle.image}
                                 alt={newsArticle.title}
                             />
                         </Link>

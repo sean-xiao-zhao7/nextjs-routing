@@ -5,33 +5,33 @@ const db = sql("src/data/data.db");
 
 const dummyNewsList: NewsArticleType[] = [
     {
-        id: "asdfasdfasdf",
+        id: 0,
         title: "News 1",
         content: "News 1 content",
-        image: "",
+        image: "/images/news/ai-robot.jpg",
         date: "2024",
         slug: "asdfasdfasdf0",
     },
     {
-        id: "asdfasdfasdf",
-        title: "News 1",
-        content: "News 1 content",
-        image: "",
+        id: 1,
+        title: "News 2",
+        content: "News 2 content",
+        image: "/images/news/beaver.jpg",
         date: "2024",
         slug: "asdfasdfasd1",
     },
     {
-        id: "asdfasdfasdf",
-        title: "News 1",
-        content: "News 1 content",
-        image: "",
+        id: 2,
+        title: "News 3",
+        content: "News 3 content",
+        image: "/images/news/hiking.jpg",
         date: "2024",
         slug: "asdfasdfasdf2",
     },
 ];
 
 export type NewsArticleType = {
-    id: string;
+    id: number;
     slug: string;
     title: string;
     image: string;
@@ -54,14 +54,7 @@ export function initNewsDb() {
     )`);
     for (const news of dummyNewsList) {
         db.exec(
-            `INSERT INTO news (id, slug, title, content, image, date) VALUES ${
-                (news.id,
-                news.slug,
-                news.title,
-                news.content,
-                news.image,
-                news.date)
-            }`
+            `INSERT INTO news (id, slug, title, content, image, date) VALUES (${news.id}, '${news.slug}', '${news.title}', '${news.content}', '${news.image}', '${news.date}')`
         );
     }
 }

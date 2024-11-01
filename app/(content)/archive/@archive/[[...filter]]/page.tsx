@@ -1,11 +1,12 @@
+import Link from "next/link";
+import { Suspense } from "react";
+
 import {
     getAllNews,
     getAvailableNewsYears,
     getNewsForYearAndMonth,
-} from "@/src/lib/news";
+} from "@/src/lib/newsDB";
 import NewsList from "@/app/components/news/NewsList";
-import Link from "next/link";
-import { Suspense } from "react";
 
 async function NewsArchiveContent({ params }) {
     let newsList = [];

@@ -8,7 +8,7 @@ export async function initNewsDbAction() {
     try {
         initNewsDb();
     } catch (error) {
-        return { error: error.message };
+        throw new Error(error.message);
     }
     redirect("/testing");
 }

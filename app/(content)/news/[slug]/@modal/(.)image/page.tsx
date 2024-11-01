@@ -1,5 +1,5 @@
 import ModalBackdrop from "@/app/components/modal/ModalBackdrop";
-import { getNewsItem } from "@/src/lib/news";
+import { getNewsItem } from "@/src/lib/newsDB";
 import { notFound } from "next/navigation";
 
 export default async function ImagePage({ params }) {
@@ -14,10 +14,7 @@ export default async function ImagePage({ params }) {
             <ModalBackdrop />
             <dialog className="modal" open>
                 <div className="fullscreen-image">
-                    <img
-                        src={`/images/news/${article.image}`}
-                        alt={article.image}
-                    />
+                    <img src={article.image} alt="News image" />
                 </div>
             </dialog>
         </>
