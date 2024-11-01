@@ -1,14 +1,15 @@
 "use client";
 
 import { CoffeeMaker } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 export default function ManageDatabaseClient({
     resetUserDatabase,
     resetPostsDatabase,
+    initNewsDbAction,
 }) {
     return (
-        <>
+        <Stack spacing={2}>
             <Button
                 variant="contained"
                 startIcon={<CoffeeMaker />}
@@ -23,6 +24,13 @@ export default function ManageDatabaseClient({
             >
                 Reset Posts Database
             </Button>
-        </>
+            <Button
+                variant="contained"
+                startIcon={<CoffeeMaker />}
+                onClick={() => initNewsDbAction()}
+            >
+                Reset News Database
+            </Button>
+        </Stack>
     );
 }
