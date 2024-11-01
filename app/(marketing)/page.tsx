@@ -3,10 +3,6 @@
 import logo from "@/assets/logo.jpg";
 import Image from "next/image";
 
-function imageLoader(config) {
-    return config.src;
-}
-
 export default function HomePage() {
     return (
         <>
@@ -21,10 +17,10 @@ export default function HomePage() {
             >
                 <Image
                     src={logo}
-                    alt="A newspaper"
+                    alt="Newspaper logo"
                     priority
                     fill
-                    loader={imageLoader}
+                    sizes="12vw"
                 />
             </div>
             <p>
