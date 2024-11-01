@@ -1,9 +1,9 @@
-import { isAuth } from "@/lib/auth";
+import { getCurrentSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
-    const authCheck = await isAuth();
-    if (!authCheck) redirect("/login");
+    const currentSession = await getCurrentSession();
+    if (!currentSession.session) redirect("/login");
 
     return (
         <>

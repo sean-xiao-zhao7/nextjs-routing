@@ -1,11 +1,11 @@
 import { redirect } from "next/navigation";
 
-import { isAuth } from "@/lib/auth";
+import { getCurrentSession } from "@/lib/auth";
 import AuthHeader from "../components/headers/AuthHeader";
 
 export default async function AuthLayout({ children }) {
-    const result = await isAuth();
-    if (result) {
+    const result = await getCurrentSession();
+    if (result.session) {
         redirect("/");
     }
     return (

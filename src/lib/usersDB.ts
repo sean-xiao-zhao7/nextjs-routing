@@ -5,6 +5,9 @@ import {
     generateSessionToken,
     createSession,
     setSessionTokenCookie,
+    invalidateSession,
+    deleteSessionTokenCookie,
+    getCurrentSession,
 } from "./auth";
 
 const db = new sql("src/data/posts.db");
@@ -88,5 +91,15 @@ export function loginUser(username, password) {
         return token;
     } else {
         throw new Error(message);
+    }
+}
+
+export async function logoutUser() {
+    const currentSession = await getCurrentSession();
+    if (currentSession.session) {
+        invalidateSession(currentSession.session.id);
+        deleteSessionTokenCookie();
+    } else {
+        throw new Error("Attempt to logout without a valid session.");
     }
 }

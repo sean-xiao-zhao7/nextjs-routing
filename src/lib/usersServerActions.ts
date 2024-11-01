@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { initUsersDb, loginUser, registerUser } from "./usersDB";
+import { initUsersDb, loginUser, registerUser, logoutUser } from "./usersDB";
 
 export async function resetUserDatabase() {
     initUsersDb();
@@ -56,4 +56,13 @@ export async function loginAction(prevState, formData) {
         return { errorMessage: e.message };
     }
     redirect("/testing");
+}
+
+export async function logoutAction(prevState) {
+    try {
+        logoutUser();
+    } catch (e) {
+        return { errorMessage: e.message };
+    }
+    redirect("/");
 }

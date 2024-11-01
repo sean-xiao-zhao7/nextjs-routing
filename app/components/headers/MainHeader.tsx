@@ -3,17 +3,17 @@
 import Link from "next/link";
 
 import AccountButton from "../buttons/AccountButton";
-import { isAuth } from "@/lib/auth";
+import { getCurrentSession } from "@/lib/auth";
 
 export default async function MainHeader({ testing }: { testing: Boolean }) {
-    const isAuthed = await isAuth();
+    const currentSession = await getCurrentSession();
 
     let authElement = (
         <li>
             <AccountButton link="/profile" />
         </li>
     );
-    if (!isAuthed)
+    if (!currentSession.session)
         authElement = (
             <li>
                 <AccountButton link="/login" />

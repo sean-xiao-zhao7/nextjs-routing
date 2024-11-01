@@ -11,14 +11,16 @@ import {
 
 const db = new sql("src/data/posts.db");
 
-export const isAuth = cache(async (): Promise<SessionValidationResult> => {
-    const token = cookies().get("session")?.value ?? null;
-    if (token === null) {
-        return { session: null, user: null };
+export const getCurrentSession = cache(
+    async (): Promise<SessionValidationResult> => {
+        const token = cookies().get("session")?.value ?? null;
+        if (token === null) {
+            return { session: null, user: null };
+        }
+        const result = validateSessionToken(token);
+        return result;
     }
-    const result = validateSessionToken(token);
-    return result;
-});
+);
 
 export function setSessionTokenCookie(token: string, expiresAt: Date): void {
     cookies().set("session", token, {
