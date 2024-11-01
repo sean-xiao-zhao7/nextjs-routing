@@ -8,7 +8,11 @@ import { isAuth } from "@/lib/auth";
 export default async function MainHeader({ testing }: { testing: Boolean }) {
     const isAuthed = await isAuth();
 
-    let authElement;
+    let authElement = (
+        <li>
+            <AccountButton link="/profile" />
+        </li>
+    );
     if (!isAuthed)
         authElement = (
             <li>
