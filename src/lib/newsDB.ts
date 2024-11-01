@@ -1,12 +1,75 @@
+import { cache } from "react";
 import sql from "better-sqlite3";
 
 const db = sql("src/data/data.db");
 
-export async function getAllNews() {
-    const news = db.prepare("SELECT * FROM news").all();
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return news;
+const dummyNewsList: NewsArticleType[] = [
+    {
+        id: "asdfasdfasdf",
+        title: "News 1",
+        content: "News 1 content",
+        image: "",
+        date: "2024",
+        slug: "asdfasdfasdf0",
+    },
+    {
+        id: "asdfasdfasdf",
+        title: "News 1",
+        content: "News 1 content",
+        image: "",
+        date: "2024",
+        slug: "asdfasdfasd1",
+    },
+    {
+        id: "asdfasdfasdf",
+        title: "News 1",
+        content: "News 1 content",
+        image: "",
+        date: "2024",
+        slug: "asdfasdfasdf2",
+    },
+];
+
+export type NewsArticleType = {
+    id: string;
+    slug: string;
+    title: string;
+    image: string;
+    date: string;
+    content: string;
+};
+
+export function initNewsDb() {
+    db.exec(`
+    DROP TABLE IF EXISTS news;
+    `);
+    db.exec(`
+    CREATE TABLE IF NOT EXISTS news (
+        id INTEGER NOT NULL PRIMARY KEY,
+        slug TEXT NOT NULL UNIQUE, 
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        image TEXT,
+        date TEXT
+    )`);
+    for (const news of dummyNewsList) {
+        db.exec(
+            `INSERT INTO news (id, slug, title, content, image, date) VALUES ${
+                (news.id,
+                news.slug,
+                news.title,
+                news.content,
+                news.image,
+                news.date)
+            }`
+        );
+    }
 }
+
+export const getAllNews = cache(async (): Promise<NewsArticleType[]> => {
+    const news = db.prepare("SELECT * FROM news").all();
+    return news;
+});
 
 export async function getNewsItem(slug) {
     const newsItem = db.prepare("SELECT * FROM news WHERE slug = ?").get(slug);
@@ -67,12 +130,3 @@ export async function getNewsForYearAndMonth(year, month) {
 
     return news;
 }
-
-export type NewsArticleType = {
-    id: string;
-    slug: string;
-    title: string;
-    image: string;
-    date: string;
-    content: string;
-};

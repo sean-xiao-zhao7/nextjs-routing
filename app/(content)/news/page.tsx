@@ -2,10 +2,15 @@ import NewsList from "@/app/components/news/NewsList";
 import { getAllNews } from "@/src/lib/newsDB";
 
 export default async function NewsPage() {
-    const result = await getAllNews();
+    let result = [];
+    try {
+        result = await getAllNews();
+    } catch (error) {
+        throw new Error(error.message);
+    }
 
     if (result.length <= 0) {
-        return <>Loading...</>;
+        return <>Loading all news...</>;
     }
 
     return <NewsList newsList={result} />;
