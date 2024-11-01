@@ -58,7 +58,7 @@ export async function loginAction(prevState, formData) {
     redirect("/testing");
 }
 
-export async function logoutAction(prevState) {
+export async function logoutAction() {
     try {
         logoutUser();
     } catch (e) {

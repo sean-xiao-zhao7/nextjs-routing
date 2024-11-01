@@ -1,5 +1,9 @@
-import { getCurrentSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
+
+import ProfilePageClientComponent from "./ProfilePageClientComponent";
+
+import { getCurrentSession } from "@/lib/auth";
+import { logoutAction } from "@/lib/usersServerActions";
 
 export default async function ProfilePage() {
     const currentSession = await getCurrentSession();
@@ -8,6 +12,7 @@ export default async function ProfilePage() {
     return (
         <>
             <h1>Profile</h1>
+            <ProfilePageClientComponent logoutAction={logoutAction} />
         </>
     );
 }
