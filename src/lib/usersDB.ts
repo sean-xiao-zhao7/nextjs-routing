@@ -34,16 +34,16 @@ export function initUsersDb() {
     )`);
 }
 
-export const getSingleUserByUsernameDB = cache(async function getSingleUser(
-    username: string
+export const getSingleUserById = cache(async function getSingleUserById(
+    id: number
 ) {
     const stmt = db.prepare(`
     SELECT firstname, lastname, username
     FROM users
-    WHERE username = ?
+    WHERE id = ?
     `);
 
-    return stmt.get(username);
+    return stmt.get(id);
 });
 
 export function hashUserPassword(password) {

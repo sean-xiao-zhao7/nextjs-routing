@@ -1,7 +1,13 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { initUsersDb, loginUser, registerUser, logoutUser } from "./usersDB";
+import {
+    initUsersDb,
+    loginUser,
+    registerUser,
+    logoutUser,
+    getSingleUserById,
+} from "./usersDB";
 
 export async function resetUserDatabase() {
     initUsersDb();
@@ -65,4 +71,16 @@ export async function logoutAction() {
         return { errorMessage: e.message };
     }
     redirect("/");
+}
+
+export async function getSingleUserAction(userId) {
+    if (!userId) {
+        return { errorMessage: "User ID required for lookup." };
+    }
+
+    try {
+        return getSingleUserById(userId);
+    } catch (e) {
+        throw new Error(e.message);
+    }
 }
