@@ -71,19 +71,22 @@ export function validateSessionToken(token: string): SessionValidationResult {
     );
     const row = db
         .prepare(
-            "SELECT sessions.id AS session_id, sessions.user_id, sessions.expires_at, users.id FROM sessions INNER JOIN users ON users.id = sessions.user_id WHERE sessions.id = ?"
+            "SELECT sessions.id AS session_id, sessions.user_id, sessions.expires_at, users.firstname, users.lastname, users.username FROM sessions INNER JOIN users ON users.id = sessions.user_id WHERE sessions.id = ?"
         )
         .get(sessionId);
     if (row === null) {
         return { session: null, user: null };
     }
     const session: Session = {
-        id: row[0],
-        userId: row[1],
-        expiresAt: new Date(row[2] * 1000),
+        id: row.session_id,
+        userId: row.user_id,
+        expiresAt: new Date(row.expires_at * 1000),
     };
     const user: User = {
-        id: row[3],
+        id: row.user_id,
+        firstname: row.firstname,
+        lastname: row.lastname,
+        username: row.username,
     };
     if (Date.now() >= session.expiresAt.getTime()) {
         db.prepare("DELETE FROM sessions WHERE id = ?").run(session.id);
@@ -115,4 +118,7 @@ export interface Session {
 
 export interface User {
     id: number;
+    username: string;
+    firstname: string;
+    lastname: string;
 }

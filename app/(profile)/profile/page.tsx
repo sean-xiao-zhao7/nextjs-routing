@@ -12,7 +12,10 @@ export default async function ProfilePage() {
     return (
         <>
             <h1>Profile</h1>
-            <ProfilePageClientComponent logoutAction={logoutAction} />
+            <ProfilePageClientComponent
+                user={currentSession.user}
+                logoutAction={logoutAction}
+            />
         </>
     );
 }
