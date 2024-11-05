@@ -10,7 +10,7 @@ export async function generateMetadata(data) {
 }
 
 export default async function CachingPage() {
-    const messages = await fetchAllMessages("caching test");
+    const messages = []; // await fetchAllMessages("caching test");
     return (
         <>
             <h1>Caching Testing</h1>

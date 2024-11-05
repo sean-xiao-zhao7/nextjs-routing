@@ -14,6 +14,7 @@ const nextConfig = {
     },
     experimental: {
         optimizePackageImports: ["icon-library"],
+        webpackMemoryOptimizations: true,
     },
 };
 
