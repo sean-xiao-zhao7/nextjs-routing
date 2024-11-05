@@ -56,7 +56,10 @@ export default function RegisterForm({ mutationAction }) {
     };
 
     // useFormstate
-    const [formState, formAction] = useActionState(mutationAction, {});
+    const [formState, formAction] = useActionState(mutationAction, {
+        errorMessage: null,
+        message: null,
+    });
 
     return (
         <>

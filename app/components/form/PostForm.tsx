@@ -26,6 +26,7 @@ export default function PostForm({ mutationAction }) {
         content: "",
         imageUrl: "",
         userId: 1,
+        errors: null,
     });
 
     return (

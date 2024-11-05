@@ -12,7 +12,7 @@ export default function RootError({
     console.log(error);
     return (
         <>
-            <MainHeader />
+            <MainHeader testing={false} />
             <h1>Error</h1>
             {error.message}
         </>

@@ -21,7 +21,7 @@ export default async function CachingPage() {
                         return (
                             <MyPaper key={message.id.toString()}>
                                 <Stack direction={"row"} spacing={2}>
-                                    <span>{message.id}</span>
+                                    <span>{message.id.toString()}</span>
                                     <span>{message.text}</span>
                                 </Stack>
                             </MyPaper>

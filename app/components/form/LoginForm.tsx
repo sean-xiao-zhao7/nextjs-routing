@@ -42,7 +42,10 @@ export default function LoginForm({ mutationAction }) {
     };
 
     // useFormState
-    const [formState, formAction] = useActionState(mutationAction, {});
+    const [formState, formAction] = useActionState(mutationAction, {
+        errorMessage: null,
+        message: null,
+    });
 
     // reset form
     const resetFormHandler = () => {
