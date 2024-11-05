@@ -1,7 +1,7 @@
 "use client";
 
 // react
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import { useFormState } from "react-dom";
 
 // mui
@@ -56,7 +56,7 @@ export default function RegisterForm({ mutationAction }) {
     };
 
     // useFormstate
-    const [formState, formAction] = useFormState(mutationAction, {});
+    const [formState, formAction] = useActionState(mutationAction, {});
 
     return (
         <>

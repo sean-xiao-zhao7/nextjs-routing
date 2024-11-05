@@ -2,7 +2,7 @@
 
 // react
 import { useFormState } from "react-dom";
-import { useRef } from "react";
+import { useActionState, useRef } from "react";
 
 // mui
 import { Box, TextField } from "@mui/material";
@@ -21,7 +21,7 @@ export default function PostForm({ mutationAction }) {
         }
     };
 
-    const [formState, formAction] = useFormState(mutationAction, {
+    const [formState, formAction] = useActionState(mutationAction, {
         title: "",
         content: "",
         imageUrl: "",

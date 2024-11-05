@@ -1,7 +1,7 @@
 "use client";
 
 // react
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import { useFormState } from "react-dom";
 
 // mui
@@ -42,7 +42,7 @@ export default function LoginForm({ mutationAction }) {
     };
 
     // useFormState
-    const [formState, formAction] = useFormState(mutationAction, {});
+    const [formState, formAction] = useActionState(mutationAction, {});
 
     // reset form
     const resetFormHandler = () => {
