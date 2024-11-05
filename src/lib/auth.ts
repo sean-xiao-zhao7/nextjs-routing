@@ -13,7 +13,8 @@ const db = new sql("src/data/posts.db");
 
 export const getCurrentSession = cache(
     async (): Promise<SessionValidationResult> => {
-        const token = cookies().get("session")?.value ?? null;
+        const cookiesResult = await cookies();
+        const token = cookiesResult.get("session")?.value ?? null;
         if (token === null) {
             return { session: null, user: null };
         }
