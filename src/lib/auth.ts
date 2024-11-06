@@ -25,19 +25,21 @@ export const getCurrentSession = cache(
     }
 );
 
-export function setSessionTokenCookie(token: string, expiresAt: Date): void {
-    cookies().then((result) =>
-        result.set("session", token, {
-            httpOnly: true,
-            sameSite: "lax",
-            secure: process.env.NODE_ENV === "production",
-            expires: expiresAt,
-            path: "/",
-        })
-    );
-}
+export const setSessionTokenCookie = cache(
+    (token: string, expiresAt: Date): void => {
+        cookies().then((result) =>
+            result.set("session", token, {
+                httpOnly: true,
+                sameSite: "lax",
+                secure: process.env.NODE_ENV === "production",
+                expires: expiresAt,
+                path: "/",
+            })
+        );
+    }
+);
 
-export function deleteSessionTokenCookie(): void {
+export const deleteSessionTokenCookie = cache((): void => {
     cookies().then((result) =>
         result.set("session", "", {
             httpOnly: true,
@@ -47,7 +49,7 @@ export function deleteSessionTokenCookie(): void {
             path: "/",
         })
     );
-}
+});
 
 export function generateSessionToken(): string {
     const bytes = new Uint8Array(20);
@@ -109,9 +111,9 @@ export function validateSessionToken(token: string): SessionValidationResult {
     return { session, user };
 }
 
-export function invalidateSession(sessionId: string): void {
+export const invalidateSession = cache((sessionId: string): void => {
     db.prepare("DELETE FROM sessions WHERE id = ?").run(sessionId);
-}
+});
 
 export type SessionValidationResult =
     | { session: Session; user: User }
