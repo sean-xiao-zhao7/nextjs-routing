@@ -6,11 +6,9 @@ import { loginAction } from "@/lib/usersServerActions";
 
 export default function LoginPage() {
     return (
-        <>
-            <Suspense fallback={<LinearProgress />}>
-                <h1>Login</h1>
-                <LoginForm mutationAction={loginAction} />
-            </Suspense>
-        </>
+        <Suspense fallback={<LinearProgress />}>
+            <h1>Login</h1>
+            <LoginForm mutationAction={loginAction} />
+        </Suspense>
     );
 }

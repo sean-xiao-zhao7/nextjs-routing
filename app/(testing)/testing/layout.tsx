@@ -1,8 +1,11 @@
+import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import { LinearProgress } from "@mui/material";
+
 import { fetchAllMessages } from "@/src/lib/messages";
+import { getCurrentSession } from "@/lib/auth";
 
 import MainHeader from "@/app/components/headers/MainHeader";
-import { getCurrentSession } from "@/lib/auth";
-import { redirect } from "next/navigation";
 
 export default async function TestingLayout(props: React.PropsWithChildren) {
     const currentSession = await getCurrentSession();
@@ -19,10 +22,10 @@ export default async function TestingLayout(props: React.PropsWithChildren) {
     }
 
     return (
-        <>
+        <Suspense fallback={<LinearProgress />}>
             <MainHeader testing={true} />
             {messagesElement}
             {props.children}
-        </>
+        </Suspense>
     );
 }

@@ -1,11 +1,12 @@
-"use client";
+import { Suspense } from "react";
+import { LinearProgress } from "@mui/material";
 
 import logo from "@/assets/logo.jpg";
 import Image from "next/image";
 
 export default function HomePage() {
     return (
-        <>
+        <Suspense fallback={<LinearProgress />}>
             <div
                 style={{
                     height: "12vw",
@@ -37,6 +38,6 @@ export default function HomePage() {
                 in this arena is the continued decline in the cost of renewable
                 energy technologies.
             </p>
-        </>
+        </Suspense>
     );
 }

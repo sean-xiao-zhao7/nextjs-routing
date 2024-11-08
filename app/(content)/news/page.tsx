@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import { LinearProgress } from "@mui/material";
+
 import NewsList from "@/app/components/news/NewsList";
 import { getAllNews } from "@/src/lib/newsDB";
 
@@ -13,5 +16,9 @@ export default async function NewsPage() {
         return <>Loading all news...</>;
     }
 
-    return <NewsList newsList={result} />;
+    return (
+        <Suspense fallback={<LinearProgress />}>
+            <NewsList newsList={result} />
+        </Suspense>
+    );
 }

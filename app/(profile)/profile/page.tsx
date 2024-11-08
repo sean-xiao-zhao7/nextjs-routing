@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import { LinearProgress } from "@mui/material";
 
 import ProfilePageClientComponent from "./ProfilePageClientComponent";
 
@@ -10,12 +12,12 @@ export default async function ProfilePage() {
     if (!currentSession.session) redirect("/login");
 
     return (
-        <>
+        <Suspense fallback={<LinearProgress />}>
             <h1>Profile</h1>
             <ProfilePageClientComponent
                 user={currentSession.user}
                 logoutAction={logoutAction}
             />
-        </>
+        </Suspense>
     );
 }
