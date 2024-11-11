@@ -7,6 +7,7 @@ import Image from "next/image";
 export default function HomePage() {
     return (
         <Suspense fallback={<LinearProgress />}>
+            <h1>Next 1 Project</h1>
             <div
                 style={{
                     height: "12vw",
@@ -29,14 +30,6 @@ export default function HomePage() {
                 a significant transformation, driven by advancements in
                 renewable energy technologies and a growing commitment to combat
                 climate change.
-            </p>
-            <p>
-                This shift is marked by increasing investments in solar, wind,
-                and other sustainable energy sources, as well as supportive
-                policies and international agreements aimed at reducing
-                greenhouse gas emissions. One of the most notable developments
-                in this arena is the continued decline in the cost of renewable
-                energy technologies.
             </p>
         </Suspense>
     );
