@@ -76,11 +76,24 @@ ul {
     margin: 3rem auto;
     max-width: 50rem;
     text-align: center;
+    animation: 0.5s linear 1s alternate none running slidein;
 }
 
 #home img {
     width: 8rem;
     box-shadow: 0 0 10px 0 #181817;
+}
+
+@keyframes slidein {
+    0% {
+        translate: 0 1rem;
+        opacity: 0;
+    }
+
+    100% {
+        translate: 0 0;
+        opacity: 1;
+    }
 }
 
 #home h1 {
