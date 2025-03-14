@@ -29,33 +29,57 @@ export default function ClockClientComponent() {
         <>
             <div id="clockContainer">
                 <div className="digitContainer">
-                    <div className="clock clock-top"></div>
-                    <div className="clock clock-bottom"></div>
+                    <div
+                        className={"clock clock-top " + "number" + time[0]}
+                    ></div>
+                    <div
+                        className={"clock clock-bottom " + "number" + time[0]}
+                    ></div>
                 </div>
                 <div className="digitSeparator"></div>
                 <div className="digitContainer">
-                    <div className="clock clock-top"></div>
-                    <div className="clock clock-bottom"></div>
+                    <div
+                        className={"clock clock-top " + "number" + time[1]}
+                    ></div>
+                    <div
+                        className={"clock clock-bottom " + "number" + time[1]}
+                    ></div>
                 </div>
                 <div className="digitSeparator">:</div>
                 <div className="digitContainer">
-                    <div className="clock clock-top"></div>
-                    <div className="clock clock-bottom"></div>
+                    <div
+                        className={"clock clock-top " + "number" + time[2]}
+                    ></div>
+                    <div
+                        className={"clock clock-bottom " + "number" + time[2]}
+                    ></div>
                 </div>
                 <div className="digitSeparator"></div>
                 <div className="digitContainer">
-                    <div className="clock clock-top"></div>
-                    <div className="clock clock-bottom"></div>
+                    <div
+                        className={"clock clock-top " + "number" + time[3]}
+                    ></div>
+                    <div
+                        className={"clock clock-bottom " + "number" + time[3]}
+                    ></div>
                 </div>
                 <div className="digitSeparator">:</div>
                 <div className="digitContainer">
-                    <div className="clock clock-top"></div>
-                    <div className="clock clock-bottom"></div>
+                    <div
+                        className={"clock clock-top " + "number" + time[4]}
+                    ></div>
+                    <div
+                        className={"clock clock-bottom " + "number" + time[4]}
+                    ></div>
                 </div>
                 <div className="digitSeparator"></div>
                 <div className="digitContainer">
-                    <div className="clock clock-top"></div>
-                    <div className="clock clock-bottom"></div>
+                    <div
+                        className={"clock clock-top " + "number" + time[5]}
+                    ></div>
+                    <div
+                        className={"clock clock-bottom " + "number" + time[5]}
+                    ></div>
                 </div>
             </div>
         </>
