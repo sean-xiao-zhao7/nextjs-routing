@@ -1,4 +1,5 @@
 "use client";
+import "./clock.css";
 
 import { useState, useEffect } from "react";
 
@@ -26,7 +27,37 @@ export default function ClockClientComponent() {
 
     return (
         <>
-            <div id="clock">{time}</div>
+            <div id="clockContainer">
+                <div className="digitContainer">
+                    <div className="clock clock-top"></div>
+                    <div className="clock clock-bottom"></div>
+                </div>
+                <div className="digitSeparator"></div>
+                <div className="digitContainer">
+                    <div className="clock clock-top"></div>
+                    <div className="clock clock-bottom"></div>
+                </div>
+                <div className="digitSeparator">:</div>
+                <div className="digitContainer">
+                    <div className="clock clock-top"></div>
+                    <div className="clock clock-bottom"></div>
+                </div>
+                <div className="digitSeparator"></div>
+                <div className="digitContainer">
+                    <div className="clock clock-top"></div>
+                    <div className="clock clock-bottom"></div>
+                </div>
+                <div className="digitSeparator">:</div>
+                <div className="digitContainer">
+                    <div className="clock clock-top"></div>
+                    <div className="clock clock-bottom"></div>
+                </div>
+                <div className="digitSeparator"></div>
+                <div className="digitContainer">
+                    <div className="clock clock-top"></div>
+                    <div className="clock clock-bottom"></div>
+                </div>
+            </div>
         </>
     );
 }
