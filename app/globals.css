@@ -72,6 +72,49 @@ ul {
     color: #181817;
 }
 
+#main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#logo {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+}
+
+#main-header #logo a,
+#main-header #logo a:hover {
+    color: #e1e1d7;
+    text-decoration: none;
+}
+
+.main-header ul {
+    display: flex;
+    gap: 2rem;
+    font-weight: bold;
+    align-items: center;
+}
+
+.main-header ul a {
+    padding: 1rem 1.5rem;
+    background-color: #bcbcb7;
+    color: #181817;
+    text-decoration: none;
+}
+
+.main-header ul a.avatar {
+    display: flex;
+    padding: 0;
+}
+
+.main-header ul a:hover:not(.avatar),
+.main-header ul a.active {
+    background-color: #626262;
+    color: #e6e6e6;
+}
+
 #home {
     margin: 3rem auto;
     max-width: 50rem;

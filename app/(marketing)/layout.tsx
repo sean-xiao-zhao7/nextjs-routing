@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
                 {children}
                 <Link href="/news">Go to news index</Link>{" "}
                 <Link href="/testing">Go to testing</Link>{" "}
-                <Link href="/widgets">Go to widgets index</Link>{" "}
+                <Link href="/clock">Go to widgets index</Link>{" "}
             </div>
         </>
     );
