@@ -1,0 +1,21 @@
+#ott-main-container {
+    background-color: white;
+}
+
+#ott-main-header {
+    padding: 12px;
+    position: relative;
+    width: 80%;
+    max-width: 1080px;
+    margin: auto;
+}
+
+/* main menu */
+
+.sub-menu {
+    display: none;
+}
+
+.menu-item:hover > .sub-menu {
+    display: block;
+}
