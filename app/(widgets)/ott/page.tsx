@@ -4,6 +4,7 @@ import { LinearProgress } from "@mui/material";
 
 import "./ott.css";
 import ottLogo from "@/assets/img/ott/ott_logo.png";
+import OTTHeroClientComponent from "./OTTHeroClientComponent";
 
 export default async function OTT() {
     return (
@@ -165,13 +166,7 @@ export default async function OTT() {
                         </li>
                     </ul>
                 </div>
-                <div id="ott-hero">
-                    <div id="ott-hero-inner">
-                        <h1>The Evolution of Connected Financial Services</h1>
-                        <p>Put your trust in us. A bright future awaits.</p>
-                        <a className="ott-button white-button">Learn more</a>
-                    </div>
-                </div>
+                <OTTHeroClientComponent />
             </div>
         </Suspense>
     );

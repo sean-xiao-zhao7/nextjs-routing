@@ -48,6 +48,7 @@
     display: none;
     position: absolute;
     background-color: white;
+    z-index: 2;
 }
 
 .sub-menu > li {
@@ -64,6 +65,7 @@
 #ott-hero {
     background-color: black;
     height: 25rem;
+    position: relative;
 }
 
 #ott-hero-inner {
@@ -76,6 +78,9 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
+
+    position: relative;
+    z-index: 2;
 }
 
 #ott-hero-inner .ott-button {
@@ -86,6 +91,10 @@
 #ott-hero h1 {
     font-size: 22px;
     margin-top: 0;
+}
+
+#ott-hero img {
+    z-index: 1;
 }
 
 /* button */
