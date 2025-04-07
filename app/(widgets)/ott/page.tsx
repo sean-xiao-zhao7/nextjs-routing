@@ -118,7 +118,7 @@ export default async function OTT() {
                             id="menu-item-3878"
                             className="top-menu_get_started first-level et_pb_menu_page_id-3878 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3878"
                         >
-                            <a>Sign in</a>
+                            <a className="red-button ott-button">Sign in</a>
                             <ul className="sub-menu">
                                 <li
                                     id="menu-item-3881"
@@ -148,7 +148,7 @@ export default async function OTT() {
                             id="menu-item-6175"
                             className="pll-parent-menu-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6175"
                         >
-                            <a href="#pll_switcher">EN</a>
+                            <a className="gray-button ott-button">EN</a>
                             <ul className="sub-menu">
                                 <li
                                     id="menu-item-6175-zh"
@@ -162,17 +162,6 @@ export default async function OTT() {
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li
-                            id="menu-item-6176-zh"
-                            className="lang-item lang-item-5 lang-item-zh lang-item-first menu-item menu-item-type-custom menu-item-object-custom menu-item-6176-zh"
-                        >
-                            <a
-                                href="https://ott.ca/zh/%e4%b8%bb%e9%a1%b5/"
-                                lang="zh-CN"
-                            >
-                                中
-                            </a>
                         </li>
                     </ul>
                 </div>
