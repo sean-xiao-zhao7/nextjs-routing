@@ -165,6 +165,13 @@ export default async function OTT() {
                         </li>
                     </ul>
                 </div>
+                <div id="ott-hero">
+                    <div id="ott-hero-inner">
+                        <h1>The Evolution of Connected Financial Services</h1>
+                        <p>Put your trust in us. A bright future awaits.</p>
+                        <a className="ott-button white-button">Learn more</a>
+                    </div>
+                </div>
             </div>
         </Suspense>
     );

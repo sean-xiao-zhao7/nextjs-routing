@@ -59,6 +59,35 @@
     background-color: #e8e8e8;
 }
 
+/* hero */
+
+#ott-hero {
+    background-color: black;
+    height: 25rem;
+}
+
+#ott-hero-inner {
+    width: 300px;
+    height: 80%;
+    background-color: rgba(137, 0, 13, 0.5);
+    margin-left: 12%;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+#ott-hero-inner .ott-button {
+    margin-top: 2rem;
+    display: block;
+}
+
+#ott-hero h1 {
+    font-size: 22px;
+    margin-top: 0;
+}
+
 /* button */
 
 a.ott-button {
@@ -68,6 +97,13 @@ a.ott-button {
     padding-bottom: 10px;
 }
 
+a.ott-button:hover {
+    cursor: pointer;
+    background-color: #c83538;
+    color: white;
+    transition: all 0.1s;
+}
+
 a.red-button {
     color: white;
     background-color: #c83538;
@@ -75,4 +111,9 @@ a.red-button {
 
 a.gray-button {
     background-color: #e8e8e8;
+}
+
+a.white-button {
+    background-color: #fff;
+    color: #c83538;
 }
