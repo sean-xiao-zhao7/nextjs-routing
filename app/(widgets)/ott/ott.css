@@ -8,14 +8,53 @@
     width: 80%;
     max-width: 1080px;
     margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* main menu */
 
-.sub-menu {
-    display: none;
+#ott-main-header-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-item:hover {
+    cursor: pointer;
 }
 
 .menu-item:hover > .sub-menu {
     display: block;
+}
+
+.menu-item {
+    margin-right: 1.5rem;
+}
+
+.menu-item:last-child {
+    margin-right: 0;
+}
+
+.menu-item > a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 2rem;
+}
+
+.sub-menu > li {
+    margin-bottom: 1rem;
+}
+
+.sub-menu > li:last-child {
+    margin-bottom: 0;
 }
