@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import "./header.css";
+
 export default async function WidgetsHeader() {
     return (
         <header id="widgets-header" className="main-header">
@@ -12,6 +14,9 @@ export default async function WidgetsHeader() {
                     </li>
                     <li>
                         <Link href="/clock">Digital Clock</Link>
+                    </li>
+                    <li>
+                        <Link href="/ott">OTT Financial</Link>
                     </li>
                 </ul>
             </nav>
