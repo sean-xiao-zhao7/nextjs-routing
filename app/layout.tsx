@@ -13,7 +13,7 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-    title: "REAL NEWS TEST",
+    title: "Sean Xiao",
     description: "Testing for news.",
 };
 

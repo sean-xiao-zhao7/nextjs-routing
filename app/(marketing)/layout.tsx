@@ -2,7 +2,7 @@ import Link from "next/link";
 import "@/app/globals.css";
 
 export const metadata = {
-    title: "REAL NEWS",
+    title: "Sean Xiao",
     description: "Definitely not fake news.",
 };
 

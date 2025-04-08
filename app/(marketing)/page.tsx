@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function HomePage() {
     return (
         <Suspense fallback={<LinearProgress />}>
-            <h1>Next 1 Project</h1>
+            <h1>Welcome to Sean Xiao's Portfolio</h1>
             <div
                 style={{
                     height: "12vw",
