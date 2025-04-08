@@ -26,10 +26,13 @@ export default function HomePage() {
                 />
             </div>
             <p>
-                In recent years, the global energy landscape has been undergoing
-                a significant transformation, driven by advancements in
-                renewable energy technologies and a growing commitment to combat
-                climate change.
+                Welcome to my portfolio | playplace | internet | my space
+                without MySpace.
+                <br />
+                Partly because NextJS is cool. Partly because Facebook is
+                uncool. And LinkedIn is absurd.
+                <br />I dedicate this piece of internet to artsy, techy, whacky
+                things.
             </p>
         </Suspense>
     );

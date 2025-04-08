@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
         <>
             <div id="home">
                 {children}
-                <Link href="/news">Go to news index</Link>{" "}
-                <Link href="/testing">Go to testing</Link>{" "}
-                <Link href="/clock">Go to widgets index</Link>{" "}
+                <Link href="/clock">See Portfolio</Link>{" "}
+                <Link href="/news">Read Blog</Link>{" "}
+                <Link href="/testing">Play Widgets</Link>{" "}
             </div>
         </>
     );
