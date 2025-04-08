@@ -54,7 +54,7 @@ export default function LoginForm({ mutationAction }) {
     };
 
     return (
-        <form action={formAction}>
+        <form>
             <MyPaper
                 sx={{
                     padding: 6,
