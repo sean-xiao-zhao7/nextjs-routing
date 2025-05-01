@@ -8,13 +8,13 @@ export default async function MainHeader({ testing }: { testing: Boolean }) {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/">HOME</Link>
                     </li>
                     <li>
-                        <Link href="/news">Blog</Link>
+                        <Link href="/news">BLOG HOME</Link>
                     </li>
                     <li>
-                        <Link href="/testing">Widgets</Link>
+                        <Link href="/testing">WIDGETS TESTING</Link>
                     </li>
                 </ul>
             </nav>
@@ -28,15 +28,7 @@ export default async function MainHeader({ testing }: { testing: Boolean }) {
                         </li>
                     </ul>
                 </nav>
-            ) : (
-                <nav>
-                    <ul>
-                        <li>
-                            <Link href="/news">Blog</Link>
-                        </li>
-                    </ul>
-                </nav>
-            )}
+            ) : null}
         </header>
     );
 }
