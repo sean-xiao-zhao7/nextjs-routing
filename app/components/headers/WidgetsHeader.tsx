@@ -1,7 +1,6 @@
 "use server";
 
 import Link from "next/link";
-
 import "./header.css";
 
 export default async function WidgetsHeader() {

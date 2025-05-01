@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
-
 import NewsList from "@/app/components/news/NewsList";
 import { getAllNews } from "@/src/lib/newsDB";
 

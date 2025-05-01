@@ -60,8 +60,9 @@ export function initNewsDb() {
 }
 
 export const getAllNews = cache(async (): Promise<NewsArticleType[]> => {
-    const news = db.prepare("SELECT * FROM news").all();
-    return news;
+    // const news = db.prepare("SELECT * FROM news").all();
+    // return news;
+    return dummyNewsList;
 });
 
 export async function getNewsItem(slug) {

@@ -1,6 +1,6 @@
 // import { redirect } from "next/navigation";
-
 // import { getCurrentSession } from "@/lib/auth";
+
 import AuthHeader from "../components/headers/AuthHeader";
 
 export default async function AuthLayout({ children }) {
@@ -8,6 +8,7 @@ export default async function AuthLayout({ children }) {
     // if (result.session) {
     //     redirect("/");
     // }
+
     return (
         <>
             <AuthHeader />
